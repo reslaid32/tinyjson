@@ -25,6 +25,9 @@ $(TARGET): $(SRC_FILES)
 	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_FILES) -o $(TARGET)
 
+check:
+	${TARGET}
+
 clean:
 	rm -rf $(BUILD_DIR)
 
