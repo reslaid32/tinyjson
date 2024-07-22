@@ -5,6 +5,12 @@
 #include <ctype.h>
 #include "json.h"
 
+/**
+ * @brief Initialize the memory pool manager.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param pool_count Number of pools to be managed.
+ */
 void json_pool_manager_init(JPoolManager* manager, size_t pool_count) {
     manager->pools = (JMemoryPool*)malloc(pool_count * sizeof(JMemoryPool));
     if (!manager->pools) {
@@ -19,6 +25,13 @@ void json_pool_manager_init(JPoolManager* manager, size_t pool_count) {
     _jdbg_print("[POOL] Manager initialized with %zu pools\n", pool_count);
 }
 
+/**
+ * @brief Allocate memory from the pool.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param size Size of memory to allocate.
+ * @return Pointer to the allocated memory.
+ */
 void* json_pool_alloc(JPoolManager* manager, size_t size) {
     if (manager->current_pool >= manager->pool_count || size > JSON_MAX_POOL_SIZE) {
         fprintf(stderr, "Pool allocation failed: requested size %zu\n", size);
@@ -42,6 +55,13 @@ void* json_pool_alloc(JPoolManager* manager, size_t size) {
     return result;
 }
 
+/**
+ * @brief Free a specific pool.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param index Index of the pool to free.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_pool_manager_free_pool(JPoolManager* manager, size_t index) {
     if (index > manager->pool_count) {
         return 0;
@@ -50,16 +70,33 @@ int json_pool_manager_free_pool(JPoolManager* manager, size_t index) {
     return 1;
 }
 
+/**
+ * @brief Free all pools managed by the pool manager.
+ * 
+ * @param manager Pointer to the pool manager.
+ */
 void json_pool_manager_free_pools(JPoolManager* manager) {
     free(manager->pools);
 }
 
+/**
+ * @brief Skip whitespace characters in the JSON string.
+ * 
+ * @param str Pointer to the JSON string pointer.
+ */
 void json_skip_whitespace(const char** str) {
     while (isspace(**str)) {
         (*str)++;
     }
 }
 
+/**
+ * @brief Parse a JSON string value.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param str Pointer to the JSON string pointer.
+ * @return Pointer to the parsed string.
+ */
 char* json_parse_string(JPoolManager* manager, const char** str) {
     json_skip_whitespace(str);
     if (**str != '"') {
@@ -81,6 +118,12 @@ char* json_parse_string(JPoolManager* manager, const char** str) {
     return result;
 }
 
+/**
+ * @brief Parse a JSON null value.
+ * 
+ * @param str Pointer to the JSON string pointer.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_null(const char** str) {
     json_skip_whitespace(str);
     if (strncmp(*str, "null", 4) == 0) {
@@ -90,6 +133,13 @@ int json_parse_null(const char** str) {
     return 0;
 }
 
+/**
+ * @brief Parse a JSON boolean value.
+ * 
+ * @param str Pointer to the JSON string pointer.
+ * @param value Pointer to the boolean value to store the result.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_bool(const char** str, bool* value) {
     json_skip_whitespace(str);
     if (strncmp(*str, "true", 4) == 0) {
@@ -105,6 +155,13 @@ int json_parse_bool(const char** str, bool* value) {
     return 0;
 }
 
+/**
+ * @brief Parse a JSON integer value.
+ * 
+ * @param str Pointer to the JSON string pointer.
+ * @param value Pointer to the integer value to store the result.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_int(const char** str, int64_t* value) {
     json_skip_whitespace(str);
     char* end;
@@ -117,6 +174,13 @@ int json_parse_int(const char** str, int64_t* value) {
     return 1;
 }
 
+/**
+ * @brief Parse a JSON floating-point value.
+ * 
+ * @param str Pointer to the JSON string pointer.
+ * @param value Pointer to the double value to store the result.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_float(const char** str, double* value) {
     json_skip_whitespace(str);
     char* end;
@@ -129,6 +193,14 @@ int json_parse_float(const char** str, double* value) {
     return 1;
 }
 
+/**
+ * @brief Parse a JSON property (key-value pair).
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param obj Pointer to the JSON object to store the property.
+ * @param str Pointer to the JSON string pointer.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_property(JPoolManager* manager, JObject* obj, const char** str) {
     json_skip_whitespace(str);
     char* key = json_parse_string(manager, str);
@@ -151,6 +223,14 @@ int json_parse_property(JPoolManager* manager, JObject* obj, const char** str) {
     return 1;
 }
 
+/**
+ * @brief Parse a JSON object.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param obj Pointer to the JSON object to store the parsed data.
+ * @param str Pointer to the JSON string pointer.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_object(JPoolManager* manager, JObject* obj, const char** str) {
     json_skip_whitespace(str);
     if (**str != '{') {
@@ -175,6 +255,14 @@ int json_parse_object(JPoolManager* manager, JObject* obj, const char** str) {
     return 1;
 }
 
+/**
+ * @brief Parse a JSON array.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param array Pointer to the JSON array to store the parsed data.
+ * @param str Pointer to the JSON string pointer.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_array(JPoolManager* manager, JArray* array, const char** str) {
     json_skip_whitespace(str);
     if (**str != '[') {
@@ -201,6 +289,14 @@ int json_parse_array(JPoolManager* manager, JArray* array, const char** str) {
     return 1;
 }
 
+/**
+ * @brief Parse a generic JSON value.
+ * 
+ * @param manager Pointer to the pool manager.
+ * @param value Pointer to the JSON value to store the parsed data.
+ * @param str Pointer to the JSON string pointer.
+ * @return Status code (1 on success, 0 on failure).
+ */
 int json_parse_value(JPoolManager* manager, JValue* value, const char** str) {
     json_skip_whitespace(str);
 
@@ -244,6 +340,12 @@ int json_parse_value(JPoolManager* manager, JValue* value, const char** str) {
     return 1;
 }
 
+/**
+ * @brief Serialize a JSON object to a file.
+ * 
+ * @param file File pointer to write the serialized data.
+ * @param obj Pointer to the JSON object to serialize.
+ */
 void json_serialize_object(FILE* file, JObject* obj) {
     fprintf(file, "{");
     for (size_t i = 0; i < obj->property_count; ++i) {
@@ -257,6 +359,12 @@ void json_serialize_object(FILE* file, JObject* obj) {
     fprintf(file, "}");
 }
 
+/**
+ * @brief Serialize a JSON array to a file.
+ * 
+ * @param file File pointer to write the serialized data.
+ * @param array Pointer to the JSON array to serialize.
+ */
 void json_serialize_array(FILE* file, JArray* array) {
     fprintf(file, "[");
     for (size_t i = 0; i < array->element_count; ++i) {
@@ -269,6 +377,12 @@ void json_serialize_array(FILE* file, JArray* array) {
     fprintf(file, "]");
 }
 
+/**
+ * @brief Serialize a generic JSON value to a file.
+ * 
+ * @param file File pointer to write the serialized data.
+ * @param value Pointer to the JSON value to serialize.
+ */
 void json_serialize_value(FILE* file, JValue* value) {
     switch (value->T) {
         case JSON_VALUE_TYPE_NULL:
