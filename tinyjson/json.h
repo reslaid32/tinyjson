@@ -72,6 +72,24 @@
 #define JSON_MAX_ARRAY_ELEMENTS 100
 
 /**
+ * @brief Define the indentation level for JSON serialization.
+ * 
+ * This macro sets the number of spaces used for indentation in JSON serialization. 
+ * The value of _Indent should be a positive integer representing the number of spaces.
+ * 
+ * @param _Indent The number of spaces for indentation.
+ */
+#define JSON_INDENT(_Indent) (int)_Indent
+
+/**
+ * @brief Define no indentation for JSON serialization.
+ * 
+ * This macro represents zero indentation level, meaning that JSON serialization will
+ * be compact without additional spaces for indentation.
+ */
+#define JSON_INDENT_NULL JSON_INDENT(0)
+
+/**
  * @brief Macro to access the value of a specific type from a JSON value.
  * 
  * This macro is used to access the value of a specific type from a JSON value 
@@ -289,27 +307,81 @@ int json_parse_array(JPoolManager* manager, JArray* array, const char** str);
 int json_parse_value(JPoolManager* manager, JValue* value, const char** str);
 
 /**
- * @brief Serialize a JSON object to a file.
+ * @brief Serialize a JSON object to a string buffer with indentation.
+ * 
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @param obj Pointer to the JSON object to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_object_to_string(char* buffer, size_t size, JObject* obj, int indent);
+
+/**
+ * @brief Serialize a JSON array to a string buffer with indentation.
+ * 
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @param array Pointer to the JSON array to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_array_to_string(char* buffer, size_t size, JArray* array, int indent);
+
+/**
+ * @brief Serialize a generic JSON value to a string buffer with indentation.
+ * 
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @param value Pointer to the JSON value to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_value_to_string(char* buffer, size_t size, JValue* value, int indent);
+
+/**
+ * @brief Serialize a JSON string value to a string buffer.
+ * 
+ * @param str Pointer to the JSON string to serialize.
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_string_to_buffer(const char* str, char* buffer, size_t size);
+
+/**
+ * @brief Serialize a JSON object to a file with indentation.
  * 
  * @param file File pointer to write the serialized data.
  * @param obj Pointer to the JSON object to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_object(FILE* file, JObject* obj);
+void json_serialize_object_to_file(FILE* file, JObject* obj, int indent);
 
 /**
- * @brief Serialize a JSON array to a file.
+ * @brief Serialize a JSON array to a file with indentation.
  * 
  * @param file File pointer to write the serialized data.
  * @param array Pointer to the JSON array to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_array(FILE* file, JArray* array);
+void json_serialize_array_to_file(FILE* file, JArray* array, int indent);
 
 /**
- * @brief Serialize a generic JSON value to a file.
+ * @brief Serialize a generic JSON value to a file with indentation.
  * 
  * @param file File pointer to write the serialized data.
  * @param value Pointer to the JSON value to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_value(FILE* file, JValue* value);
+void json_serialize_value_to_file(FILE* file, JValue* value, int indent);
+
+/**
+ * @brief Serialize a JSON string to a file.
+ * 
+ * @param str Pointer to the JSON string to serialize.
+ * @param file File pointer to write the serialized data.
+ */
+void json_serialize_string_to_file(const char* str, FILE* file);
 
 #endif // JSON_H

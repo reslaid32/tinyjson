@@ -46,6 +46,22 @@ When `JSON_DEBUG_MODE` is defined, this macro will print debug messages using th
 #define _jdbg_print(_fmt, ...) printf(_fmt, __VA_ARGS__)
 ```
 
+## JSON_INDENT
+
+his macro sets the number of spaces used for indentation in JSON serialization. The value of _Indent should be a positive integer representing the number of spaces.
+
+```c
+#define JSON_INDENT(_Indent) (int)_Indent
+```
+
+## JSON_INDENT_NULL
+
+This macro represents zero indentation level, meaning that JSON serialization will be compact without additional spaces for indentation.
+
+```c
+#define JSON_INDENT_NULL JSON_INDENT(0)
+```
+
 ### JVALUE_GET
 
 Access the value of a specific type from a JSON value structure.
@@ -268,26 +284,66 @@ Parse a generic JSON value.
 int json_parse_value(JPoolManager* manager, JValue* value, const char** str);
 ```
 
-### json_serialize_object
+### `json_serialize_object_to_string`
 
-Serialize a JSON object to a file.
+Serialize a JSON object to a string buffer with indentation.
 
 ```c
-void json_serialize_object(FILE* file, JObject* obj);
+int json_serialize_object_to_string(char* buffer, size_t size, JObject* obj, int indent);
 ```
 
-### json_serialize_array
+### `json_serialize_array_to_string`
 
-Serialize a JSON array to a file.
+Serialize a JSON array to a string buffer with indentation.
 
 ```c
-void json_serialize_array(FILE* file, JArray* array);
+int json_serialize_array_to_string(char* buffer, size_t size, JArray* array, int indent);
 ```
 
-### json_serialize_value
+### `json_serialize_value_to_string`
 
-Serialize a generic JSON value to a file.
+Serialize a generic JSON value to a string buffer with indentation.
 
 ```c
-void json_serialize_value(FILE* file, JValue* value);
+int json_serialize_value_to_string(char* buffer, size_t size, JValue* value, int indent);
+```
+
+### `json_serialize_string_to_buffer`
+
+Serialize a JSON string value to a string buffer.
+
+```c
+int json_serialize_string_to_buffer(const char* str, char* buffer, size_t size);
+```
+
+### `json_serialize_object_to_file`
+
+Serialize a JSON object to a file with indentation.
+
+```c
+void json_serialize_object_to_file(FILE* file, JObject* obj, int indent);
+```
+
+### `json_serialize_array_to_file`
+
+Serialize a JSON array to a file with indentation.
+
+```c
+void json_serialize_array_to_file(FILE* file, JArray* array, int indent);
+```
+
+### `json_serialize_value_to_file`
+
+Serialize a generic JSON value to a file with indentation.
+
+```c
+void json_serialize_value_to_file(FILE* file, JValue* value, int indent);
+```
+
+### `json_serialize_string_to_file`
+
+Serialize a JSON string to a file.
+
+```c
+void json_serialize_string_to_file(const char* str, FILE* file);
 ```

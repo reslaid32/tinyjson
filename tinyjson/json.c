@@ -90,6 +90,11 @@ void json_skip_whitespace(const char** str) {
     }
 }
 
+#ifdef _MSC_VER
+    #pragma warning(push)
+    #pragma warning(disable: 4996)
+#endif // _MSC_VER
+
 /**
  * @brief Parse a JSON string value.
  * 
@@ -117,6 +122,10 @@ char* json_parse_string(JPoolManager* manager, const char** str) {
     _jdbg_print("[JSON] Parsed string: %s\n", result);
     return result;
 }
+
+#ifdef _MSC_VER
+    #pragma warning(pop)
+#endif // _MSC_VER
 
 /**
  * @brief Parse a JSON null value.
@@ -340,56 +349,307 @@ int json_parse_value(JPoolManager* manager, JValue* value, const char** str) {
     return 1;
 }
 
+// Helper function to write indentation
+static int write_indent(char* buffer, size_t size, int* pos, int indent_level, int indent) {
+    if (*pos >= (int)size) return -1;
+    
+    for (int i = 0; i < indent_level * indent; ++i) {
+        if (*pos >= (int)size) return -1;
+        buffer[(*pos)++] = ' ';
+    }
+    return 0;
+}
+
+// Helper function to write indentation to file
+static int write_indent_to_file(FILE* file, int indent_level, int indent) {
+    for (int i = 0; i < indent_level * indent; ++i) {
+        if (fputc(' ', file) == EOF) return -1;
+    }
+    return 0;
+}
+
 /**
- * @brief Serialize a JSON object to a file.
+ * @brief Serialize a JSON object to a string buffer with indentation.
+ * 
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @param obj Pointer to the JSON object to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_object_to_string(char* buffer, size_t size, JObject* obj, int indent) {
+    int pos = 0;
+    int result = snprintf(buffer + pos, size - pos, "{");
+    if (result < 0 || result >= (int)(size - pos)) return -1;
+    pos += result;
+
+    if (indent > 0) {
+        result = snprintf(buffer + pos, size - pos, "\n");
+        if (result < 0 || result >= (int)(size - pos)) return -1;
+        pos += result;
+    }
+
+    for (size_t i = 0; i < obj->property_count; ++i) {
+        if (indent > 0) {
+            if (write_indent(buffer, size, &pos, 1, indent) < 0) return -1;
+        }
+        result = snprintf(buffer + pos, size - pos, "\"%s\": ", obj->properties[i].key);
+        if (result < 0 || result >= (int)(size - pos)) return -1;
+        pos += result;
+
+        result = json_serialize_value_to_string(buffer + pos, size - pos, &obj->properties[i].value, indent);
+        if (result < 0 || result >= (int)(size - pos)) return -1;
+        pos += result;
+
+        if (i < obj->property_count - 1) {
+            result = snprintf(buffer + pos, size - pos, ", ");
+            if (result < 0 || result >= (int)(size - pos)) return -1;
+            pos += result;
+        }
+
+        if (indent > 0) {
+            result = snprintf(buffer + pos, size - pos, "\n");
+            if (result < 0 || result >= (int)(size - pos)) return -1;
+            pos += result;
+        }
+    }
+
+    if (indent > 0) {
+        if (write_indent(buffer, size, &pos, 0, indent) < 0) return -1;
+    }
+    result = snprintf(buffer + pos, size - pos, "}");
+    if (result < 0 || result >= (int)(size - pos)) return -1;
+    pos += result;
+
+    return pos;
+}
+
+/**
+ * @brief Serialize a JSON array to a string buffer with indentation.
+ * 
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @param array Pointer to the JSON array to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_array_to_string(char* buffer, size_t size, JArray* array, int indent) {
+    int pos = 0;
+    int result = snprintf(buffer + pos, size - pos, "[");
+    if (result < 0 || result >= (int)(size - pos)) return -1;
+    pos += result;
+
+    if (indent > 0) {
+        result = snprintf(buffer + pos, size - pos, "\n");
+        if (result < 0 || result >= (int)(size - pos)) return -1;
+        pos += result;
+    }
+
+    for (size_t i = 0; i < array->element_count; ++i) {
+        if (indent > 0) {
+            if (write_indent(buffer, size, &pos, 1, indent) < 0) return -1;
+        }
+
+        result = json_serialize_value_to_string(buffer + pos, size - pos, &array->elements[i], indent);
+        if (result < 0 || result >= (int)(size - pos)) return -1;
+        pos += result;
+
+        if (i < array->element_count - 1) {
+            result = snprintf(buffer + pos, size - pos, ", ");
+            if (result < 0 || result >= (int)(size - pos)) return -1;
+            pos += result;
+        }
+
+        if (indent > 0) {
+            result = snprintf(buffer + pos, size - pos, "\n");
+            if (result < 0 || result >= (int)(size - pos)) return -1;
+            pos += result;
+        }
+    }
+
+    if (indent > 0) {
+        if (write_indent(buffer, size, &pos, 0, indent) < 0) return -1;
+    }
+    result = snprintf(buffer + pos, size - pos, "]");
+    if (result < 0 || result >= (int)(size - pos)) return -1;
+    pos += result;
+
+    return pos;
+}
+
+/**
+ * @brief Serialize a generic JSON value to a string buffer with indentation.
+ * 
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @param value Pointer to the JSON value to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_value_to_string(char* buffer, size_t size, JValue* value, int indent) {
+    switch (value->T) {
+        case JSON_VALUE_TYPE_NULL:
+            return snprintf(buffer, size, "null");
+        case JSON_VALUE_TYPE_BOOLEAN:
+            return snprintf(buffer, size, value->V.boolean_value ? "true" : "false");
+        case JSON_VALUE_TYPE_INTEGER:
+            return snprintf(buffer, size, "%lld", (long long)value->V.integer_value);
+        case JSON_VALUE_TYPE_REAL:
+            return snprintf(buffer, size, "%f", value->V.real_value);
+        case JSON_VALUE_TYPE_STRING:
+            return json_serialize_string_to_buffer(value->V.string_value, buffer, size);
+        case JSON_VALUE_TYPE_OBJECT:
+            return json_serialize_object_to_string(buffer, size, value->V.object_value, indent);
+        case JSON_VALUE_TYPE_ARRAY:
+            return json_serialize_array_to_string(buffer, size, value->V.array_value, indent);
+        default:
+            return -1;
+    }
+}
+
+/**
+ * @brief Serialize a JSON string to a string buffer.
+ * 
+ * @param str Pointer to the JSON string to serialize.
+ * @param buffer Pointer to the buffer to store the serialized string.
+ * @param size Size of the buffer.
+ * @return The length of the serialized string, or -1 if the buffer is too small.
+ */
+int json_serialize_string_to_buffer(const char* str, char* buffer, size_t size) {
+    int pos = 0;
+    int result = snprintf(buffer + pos, size - pos, "\"");
+    if (result < 0 || result >= (int)(size - pos)) return -1;
+    pos += result;
+
+    while (*str) {
+        if (pos >= (int)size) return -1;
+        switch (*str) {
+            case '\"':
+                result = snprintf(buffer + pos, size - pos, "\\\"");
+                break;
+            case '\\':
+                result = snprintf(buffer + pos, size - pos, "\\\\");
+                break;
+            case '\b':
+                result = snprintf(buffer + pos, size - pos, "\\b");
+                break;
+            case '\f':
+                result = snprintf(buffer + pos, size - pos, "\\f");
+                break;
+            case '\n':
+                result = snprintf(buffer + pos, size - pos, "\\n");
+                break;
+            case '\r':
+                result = snprintf(buffer + pos, size - pos, "\\r");
+                break;
+            case '\t':
+                result = snprintf(buffer + pos, size - pos, "\\t");
+                break;
+            default:
+                result = snprintf(buffer + pos, size - pos, "%c", *str);
+                break;
+        }
+        if (result < 0 || result >= (int)(size - pos)) return -1;
+        pos += result;
+        str++;
+    }
+
+    result = snprintf(buffer + pos, size - pos, "\"");
+    if (result < 0 || result >= (int)(size - pos)) return -1;
+    pos += result;
+
+    return pos;
+}
+
+/**
+ * @brief Serialize a JSON object to a file with indentation.
  * 
  * @param file File pointer to write the serialized data.
  * @param obj Pointer to the JSON object to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_object(FILE* file, JObject* obj) {
-    fprintf(file, "{");
+void json_serialize_object_to_file(FILE* file, JObject* obj, int indent) {
+    if (fputc('{', file) == EOF) return;
+
+    if (indent > 0) {
+        if (fputc('\n', file) == EOF) return;
+    }
+
     for (size_t i = 0; i < obj->property_count; ++i) {
+        if (indent > 0) {
+            if (write_indent_to_file(file, 1, indent) < 0) return;
+        }
 
         fprintf(file, "\"%s\": ", obj->properties[i].key);
-        json_serialize_value(file, &obj->properties[i].value);
+        json_serialize_value_to_file(file, &obj->properties[i].value, indent);
+
         if (i < obj->property_count - 1) {
-            fprintf(file, ", ");
+            if (fputs(", ", file) == EOF) return;
+        }
+
+        if (indent > 0) {
+            if (fputc('\n', file) == EOF) return;
         }
     }
-    fprintf(file, "}");
+
+    if (indent > 0) {
+        if (write_indent_to_file(file, 0, indent) < 0) return;
+    }
+
+    if (fputc('}', file) == EOF) return;
 }
 
 /**
- * @brief Serialize a JSON array to a file.
+ * @brief Serialize a JSON array to a file with indentation.
  * 
  * @param file File pointer to write the serialized data.
  * @param array Pointer to the JSON array to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_array(FILE* file, JArray* array) {
-    fprintf(file, "[");
-    for (size_t i = 0; i < array->element_count; ++i) {
+void json_serialize_array_to_file(FILE* file, JArray* array, int indent) {
+    if (fputc('[', file) == EOF) return;
 
-        json_serialize_value(file, &array->elements[i]);
+    if (indent > 0) {
+        if (fputc('\n', file) == EOF) return;
+    }
+
+    for (size_t i = 0; i < array->element_count; ++i) {
+        if (indent > 0) {
+            if (write_indent_to_file(file, 1, indent) < 0) return;
+        }
+
+        json_serialize_value_to_file(file, &array->elements[i], indent);
+
         if (i < array->element_count - 1) {
-            fprintf(file, ", ");
+            if (fputs(", ", file) == EOF) return;
+        }
+
+        if (indent > 0) {
+            if (fputc('\n', file) == EOF) return;
         }
     }
-    fprintf(file, "]");
+
+    if (indent > 0) {
+        if (write_indent_to_file(file, 0, indent) < 0) return;
+    }
+
+    if (fputc(']', file) == EOF) return;
 }
 
 /**
- * @brief Serialize a generic JSON value to a file.
+ * @brief Serialize a generic JSON value to a file with indentation.
  * 
  * @param file File pointer to write the serialized data.
  * @param value Pointer to the JSON value to serialize.
+ * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_value(FILE* file, JValue* value) {
+void json_serialize_value_to_file(FILE* file, JValue* value, int indent) {
     switch (value->T) {
         case JSON_VALUE_TYPE_NULL:
-            fprintf(file, "null");
+            if (fputs("null", file) == EOF) return;
             break;
         case JSON_VALUE_TYPE_BOOLEAN:
-            fprintf(file, value->V.boolean_value ? "true" : "false");
+            if (fputs(value->V.boolean_value ? "true" : "false", file) == EOF) return;
             break;
         case JSON_VALUE_TYPE_INTEGER:
             fprintf(file, "%lld", (long long)value->V.integer_value);
@@ -398,13 +658,55 @@ void json_serialize_value(FILE* file, JValue* value) {
             fprintf(file, "%f", value->V.real_value);
             break;
         case JSON_VALUE_TYPE_STRING:
-            fprintf(file, "\"%s\"", value->V.string_value);
+            json_serialize_string_to_file(value->V.string_value, file);
             break;
         case JSON_VALUE_TYPE_OBJECT:
-            json_serialize_object(file, value->V.object_value);
+            json_serialize_object_to_file(file, value->V.object_value, indent);
             break;
         case JSON_VALUE_TYPE_ARRAY:
-            json_serialize_array(file, value->V.array_value);
+            json_serialize_array_to_file(file, value->V.array_value, indent);
             break;
     }
+}
+
+/**
+ * @brief Serialize a JSON string to a file.
+ * 
+ * @param str Pointer to the JSON string to serialize.
+ * @param file File pointer to write the serialized data.
+ */
+void json_serialize_string_to_file(const char* str, FILE* file) {
+    if (fputc('"', file) == EOF) return;
+
+    while (*str) {
+        switch (*str) {
+            case '\"':
+                if (fputs("\\\"", file) == EOF) return;
+                break;
+            case '\\':
+                if (fputs("\\\\", file) == EOF) return;
+                break;
+            case '\b':
+                if (fputs("\\b", file) == EOF) return;
+                break;
+            case '\f':
+                if (fputs("\\f", file) == EOF) return;
+                break;
+            case '\n':
+                if (fputs("\\n", file) == EOF) return;
+                break;
+            case '\r':
+                if (fputs("\\r", file) == EOF) return;
+                break;
+            case '\t':
+                if (fputs("\\t", file) == EOF) return;
+                break;
+            default:
+                if (fputc(*str, file) == EOF) return;
+                break;
+        }
+        str++;
+    }
+
+    if (fputc('"', file) == EOF) return;
 }

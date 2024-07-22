@@ -7,6 +7,8 @@ void test_json_parse_int();
 void test_json_parse_float();
 void test_json_parse_object();
 void test_json_parse_array();
+void test_json_serialization();
+// void test_json_serialization_to_file();
 
 int main() {
     test_json_parse_string();
@@ -16,6 +18,8 @@ int main() {
     test_json_parse_float();
     test_json_parse_object();
     test_json_parse_array();
+    test_json_serialization();
+    // test_json_serialization_to_file();
 
     printf("All tests passed!\n");
     return 0;
