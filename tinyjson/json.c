@@ -1,4 +1,32 @@
-// json.c
+/**
+ * @file json.c
+ * @brief Implementation of a JSON parser and serializer in C.
+ * 
+ * This file contains the implementation of functions for parsing JSON strings, 
+ * serializing C structures to JSON, and managing memory using a pool allocator.
+ * The parser handles various JSON data types including strings, numbers, booleans, 
+ * null values, arrays, and objects. The serializer converts C structures back into 
+ * JSON format, and the memory pool efficiently manages memory during these processes.
+ * 
+ * Key functionalities implemented in this file include:
+ * - Initialization and management of the memory pool with `json_pool_manager_init`, 
+ *   `json_pool_alloc`, `json_pool_manager_free_pool`, and `json_pool_manager_free_pools`.
+ * - Parsing of JSON values using functions like `json_parse_string`, `json_parse_null`, 
+ *   `json_parse_bool`, `json_parse_int`, `json_parse_float`, `json_parse_property`, 
+ *   `json_parse_object`, `json_parse_array`, and `json_parse_value`.
+ * - Serialization of JSON values, objects, and arrays to string buffers and files 
+ *   using `json_serialize_*` functions such as `json_serialize_object_to_string`, 
+ *   `json_serialize_array_to_string`, `json_serialize_value_to_string`, and their 
+ *   file counterparts.
+ * 
+ * The implementation is designed to be lightweight and efficient, making it well-suited 
+ * for use in environments with limited resources, such as embedded systems.
+ * 
+ * Usage:
+ * - Include this file in your build to enable the JSON parsing and serialization functionality.
+ * - Use the provided API functions to integrate JSON parsing and serialization into your C projects.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

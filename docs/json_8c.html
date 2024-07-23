@@ -94,6 +94,9 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">json.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of a JSON parser and serializer in C.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -184,7 +187,20 @@ Functions</h2></td></tr>
 <tr class="memdesc:a1e9aa33c7a8327a299266a4fd065c19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a property from a JSON object by key.  <br /></td></tr>
 <tr class="separator:a1e9aa33c7a8327a299266a4fd065c19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of a JSON parser and serializer in C. </p>
+<p>This file contains the implementation of functions for parsing JSON strings, serializing C structures to JSON, and managing memory using a pool allocator. The parser handles various JSON data types including strings, numbers, booleans, null values, arrays, and objects. The serializer converts C structures back into JSON format, and the memory pool efficiently manages memory during these processes.</p>
+<p>Key functionalities implemented in this file include:</p><ul>
+<li>Initialization and management of the memory pool with <code>json_pool_manager_init</code>, <code>json_pool_alloc</code>, <code>json_pool_manager_free_pool</code>, and <code>json_pool_manager_free_pools</code>.</li>
+<li>Parsing of JSON values using functions like <code>json_parse_string</code>, <code>json_parse_null</code>, <code>json_parse_bool</code>, <code>json_parse_int</code>, <code>json_parse_float</code>, <code>json_parse_property</code>, <code>json_parse_object</code>, <code>json_parse_array</code>, and <code>json_parse_value</code>.</li>
+<li>Serialization of JSON values, objects, and arrays to string buffers and files using <code>json_serialize_*</code> functions such as <code>json_serialize_object_to_string</code>, <code>json_serialize_array_to_string</code>, <code>json_serialize_value_to_string</code>, and their file counterparts.</li>
+</ul>
+<p>The implementation is designed to be lightweight and efficient, making it well-suited for use in environments with limited resources, such as embedded systems.</p>
+<p>Usage:</p><ul>
+<li>Include this file in your build to enable the JSON parsing and serialization functionality.</li>
+<li>Use the provided API functions to integrate JSON parsing and serialization into your C projects. </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0df9808c682f44c69faa6aeb19aff092" name="a0df9808c682f44c69faa6aeb19aff092"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0df9808c682f44c69faa6aeb19aff092">&#9670;&#160;</a></span>json_array_add_element()</h2>
 
