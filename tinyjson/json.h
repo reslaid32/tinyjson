@@ -99,7 +99,7 @@
  * @param _Type The type of the value to access (string, boolean, integer, real, array, object).
  * @return The value of the specified type.
  */
-#define JVALUE_GET(_JVal,_Type) _JVal##.V.##_Type##_value
+#define JVALUE_GET(_JVal, _Type) ((_JVal).V.##_Type##_value)
 
 /**
  * @brief Macro to access the value of a specific type from a pointer to a JSON value.
@@ -111,7 +111,7 @@
  * @param _Type The type of the value to access (string, boolean, integer, real, array, object).
  * @return The value of the specified type.
  */
-#define JVALUE_REF_GET(_JVal,_Type) _JVal##->V.##_Type##_value
+#define JVALUE_REF_GET(_JVal, _Type) ((_JVal)->V._Type##_value)
 
 /**
  * @brief Memory pool for efficient allocation during JSON parsing.
