@@ -710,3 +710,108 @@ void json_serialize_string_to_file(const char* str, FILE* file) {
 
     if (fputc('"', file) == EOF) return;
 }
+
+#ifdef _MSC_VER
+    #pragma warning(push)
+    #pragma warning(disable: 4996)
+#endif // _MSC_VER
+
+/**
+ * @brief Add a property to a JSON object.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @param value Pointer to the value.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_add_property(JObject* obj, const char* key, JValue* value) {
+    if (obj->property_count >= JSON_MAX_PROPERTIES) {
+        return 0; // Failure: maximum number of properties reached
+    }
+    
+    JProperty* property = &obj->properties[obj->property_count];
+    property->key = strdup(key);
+    if (!property->key) {
+        return 0; // Failure: memory allocation failure
+    }
+    property->value = *value;
+    
+    obj->property_count++;
+    return 1; // Success
+}
+
+#ifdef _MSC_VER
+    #pragma warning(pop)
+#endif // _MSC_VER
+
+/**
+ * @brief Add an element to a JSON array.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param value Pointer to the value.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_add_element(JArray* array, JValue* value) {
+    if (array->element_count >= JSON_MAX_ARRAY_ELEMENTS) {
+        return 0; // Failure: maximum number of elements reached
+    }
+    
+    JValue* element = &array->elements[array->element_count];
+    *element = *value;
+    
+    array->element_count++;
+    return 1; // Success
+}
+
+/**
+ * @brief Get an element from a JSON array by index.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param index Index of the element to retrieve.
+ * @param value Pointer to the value to store the retrieved element.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_get_element(const JArray* array, size_t index, JValue** value) {
+    if (index >= array->element_count) {
+        return 0; // Failure: index out of bounds
+    }
+    
+    *value = (JValue*)&array->elements[index];
+    return 1; // Success
+}
+
+/**
+ * @brief Get a property from a JSON object by index.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param index Index of the property to retrieve.
+ * @param property Pointer to the property to store the retrieved property.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_get_property_by_index(const JObject* obj, size_t index, JProperty** property) {
+    if (index >= obj->property_count) {
+        return 0; // Failure: index out of bounds
+    }
+    
+    *property = (JProperty*)&obj->properties[index];
+    return 1; // Success
+}
+
+/**
+ * @brief Get a property from a JSON object by key.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @param property Pointer to the property to store the retrieved property.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_get_property(const JObject* obj, const char* key, JProperty** property) {
+    for (size_t i = 0; i < obj->property_count; ++i) {
+        if (strcmp(obj->properties[i].key, key) == 0) {
+            // *property = &obj->properties[i];
+            json_object_get_property_by_index(obj, i, property);
+            return 1; // Success
+        }
+    }
+    return 0; // Failure: property not found
+}

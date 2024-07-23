@@ -347,3 +347,116 @@ Serialize a JSON string to a file.
 ```c
 void json_serialize_string_to_file(const char* str, FILE* file);
 ```
+
+### `json_object_add_property`
+
+Add a property to a JSON object.
+
+```c
+/**
+ * @brief Add a property to a JSON object.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @param value Pointer to the value.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_add_property(JObject* obj, const char* key, JValue* value) {
+    if (obj->property_count >= JSON_MAX_PROPERTIES) {
+        return 0; // Too many properties
+    }
+    JProperty* property = &obj->properties[obj->property_count++];
+    property->key = (char*)key;
+    property->value = *value;
+    return 1;
+}
+```
+
+### `json_array_add_element`
+
+Add an element to a JSON array.
+
+```c
+/**
+ * @brief Add an element to a JSON array.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param value Pointer to the value.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_add_element(JArray* array, JValue* value) {
+    if (array->element_count >= JSON_MAX_ARRAY_ELEMENTS) {
+        return 0; // Too many elements
+    }
+    array->elements[array->element_count++] = *value;
+    return 1;
+}
+```
+
+### `json_array_get_element`
+
+Get an element from a JSON array by index.
+
+```c
+/**
+ * @brief Get an element from a JSON array by index.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param index Index of the element to retrieve.
+ * @param value Pointer to the value to store the retrieved element.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_get_element(const JArray* array, size_t index, JValue** value) {
+    if (index >= array->element_count) {
+        return 0; // Index out of bounds
+    }
+    *value = &array->elements[index];
+    return 1;
+}
+```
+
+### `json_object_get_property_by_index`
+
+Get a property from a JSON object by index.
+
+```c
+/**
+ * @brief Get a property from a JSON object by index.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param index Index of the property to retrieve.
+ * @param property Pointer to the property to store the retrieved property.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_get_property_by_index(const JObject* obj, size_t index, JProperty** property) {
+    if (index >= obj->property_count) {
+        return 0; // Index out of bounds
+    }
+    *property = &obj->properties[index];
+    return 1;
+}
+```
+
+### `json_object_get_property`
+
+Get a property from a JSON object by key.
+
+```c
+/**
+ * @brief Get a property from a JSON object by key.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @param property Pointer to the property to store the retrieved property.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_get_property(const JObject* obj, const char* key, JProperty** property) {
+    for (size_t i = 0; i < obj->property_count; ++i) {
+        if (strcmp(obj->properties[i].key, key) == 0) {
+            *property = &obj->properties[i];
+            return 1;
+        }
+    }
+    return 0; // Property not found
+}
+```

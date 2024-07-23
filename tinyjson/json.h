@@ -384,4 +384,53 @@ void json_serialize_value_to_file(FILE* file, JValue* value, int indent);
  */
 void json_serialize_string_to_file(const char* str, FILE* file);
 
+/**
+ * @brief Add a property to a JSON object.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @param value Pointer to the value.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_add_property(JObject* obj, const char* key, JValue* value);
+
+/**
+ * @brief Add an element to a JSON array.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param value Pointer to the value.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_add_element(JArray* array, JValue* value);
+
+/**
+ * @brief Get an element from a JSON array by index.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param index Index of the element to retrieve.
+ * @param value Pointer to the value to store the retrieved element.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_get_element(const JArray* array, size_t index, JValue** value);
+
+/**
+ * @brief Get a property from a JSON object by index.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param index Index of the property to retrieve.
+ * @param property Pointer to the property to store the retrieved property.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_get_property_by_index(const JObject* obj, size_t index, JProperty** property);
+
+/**
+ * @brief Get a property from a JSON object by key.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @param property Pointer to the property to store the retrieved property.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_get_property(const JObject* obj, const char* key, JProperty** property);
+
 #endif // JSON_H

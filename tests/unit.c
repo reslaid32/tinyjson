@@ -169,3 +169,77 @@ void test_json_serialization() {
 //     json_serialize_value_to_file(stdout, &value, 0);
 //     printf("\n");
 // }
+
+void test_json_object_add_property() {
+    JObject obj = { .property_count = 0 };
+    JValue value;
+    value.T = JSON_VALUE_TYPE_STRING;
+    value.V.string_value = "value";
+
+    int result = json_object_add_property(&obj, "key", &value);
+
+    assert(result == 1);
+    assert(obj.property_count == 1);
+    assert(strcmp(obj.properties[0].key, "key") == 0);
+    assert(strcmp(JVALUE_GET(obj.properties[0].value, string), "value") == 0);
+}
+
+void test_json_array_add_element() {
+    JArray array = { .element_count = 0 };
+    JValue value;
+    value.T = JSON_VALUE_TYPE_INTEGER;
+    value.V.integer_value = 42;
+
+    int result = json_array_add_element(&array, &value);
+
+    assert(result == 1);
+    assert(array.element_count == 1);
+    assert(JVALUE_GET(array.elements[0], integer) == 42);
+}
+
+void test_json_array_get_element() {
+    JArray array = { .element_count = 1 };
+    JValue value;
+    value.T = JSON_VALUE_TYPE_BOOLEAN;
+    value.V.boolean_value = true;
+    array.elements[0] = value;
+
+    JValue* retrieved_value;
+    int result = json_array_get_element(&array, 0, &retrieved_value);
+
+    assert(result == 1);
+    assert(retrieved_value->T == JSON_VALUE_TYPE_BOOLEAN);
+    assert(retrieved_value->V.boolean_value == true);
+}
+
+void test_json_object_get_property_by_index() {
+    JObject obj = { .property_count = 1 };
+    JProperty property;
+    property.key = "key";
+    property.value.T = JSON_VALUE_TYPE_REAL;
+    property.value.V.real_value = 3.14;
+    obj.properties[0] = property;
+
+    JProperty* retrieved_property;
+    int result = json_object_get_property_by_index(&obj, 0, &retrieved_property);
+
+    assert(result == 1);
+    assert(strcmp(retrieved_property->key, "key") == 0);
+    assert(retrieved_property->value.T == JSON_VALUE_TYPE_REAL);
+    assert(retrieved_property->value.V.real_value == 3.14);
+}
+
+void test_json_object_get_property() {
+    JObject obj = { .property_count = 1 };
+    JProperty property;
+    property.key = "key";
+    property.value.T = JSON_VALUE_TYPE_NULL;
+    obj.properties[0] = property;
+
+    JProperty* retrieved_property;
+    int result = json_object_get_property(&obj, "key", &retrieved_property);
+
+    assert(result == 1);
+    assert(strcmp(retrieved_property->key, "key") == 0);
+    assert(retrieved_property->value.T == JSON_VALUE_TYPE_NULL);
+}
