@@ -67,7 +67,7 @@ This macro represents zero indentation level, meaning that JSON serialization wi
 Access the value of a specific type from a JSON value structure.
 
 ```c
-#define JVALUE_GET(_JVal, _Type) _JVal##.V.##_Type##_value
+#define JVALUE_GET(_JVal, _Type) ((_JVal).V._Type##_value)
 ```
 
 ### JVALUE_REF_GET
@@ -75,7 +75,7 @@ Access the value of a specific type from a JSON value structure.
 Access the value of a specific type from a pointer to a JSON value structure.
 
 ```c
-#define JVALUE_REF_GET(_JVal, _Type) _JVal##->V.##_Type##_value
+#define JVALUE_REF_GET(_JVal, _Type) ((_JVal)->V._Type##_value)
 ```
 
 ## Data Structures
