@@ -28,7 +28,7 @@
 #ifndef JSON_H
 #define JSON_H
 
-#include "_export.h"
+#include "export.h"
 
 #include <stddef.h>
 #include <stdint.h>

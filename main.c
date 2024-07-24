@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include "json.h"
+#include <tinyjson/json.h>
 
 void test_json_parse_string() {
     JPoolManager manager;

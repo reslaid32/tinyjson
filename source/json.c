@@ -33,7 +33,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "json.h"
+#include <tinyjson/json.h> // ../include/tinyjson/json.h
 
 /**
  * @brief Initialize the memory pool manager.
