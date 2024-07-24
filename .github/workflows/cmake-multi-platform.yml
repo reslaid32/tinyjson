@@ -38,4 +38,4 @@ jobs:
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      run: ./main
+      run: ./bin/main

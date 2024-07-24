@@ -28,6 +28,8 @@
 #ifndef JSON_H
 #define JSON_H
 
+#include "_export.h"
+
 #include <stddef.h>
 #include <stdint.h>
 #include <float.h>
@@ -183,12 +185,32 @@ typedef struct _S_JArray {
 } JArray;
 
 /**
+ * @def __cplusplus
+ * @brief Macro for checking if the compiler is a C++ compiler.
+ *
+ * This macro is defined by C++ compilers and is used to determine whether the code
+ * is being compiled as C++ code. If defined, the enclosed declarations are wrapped
+ * in an `extern "C"` block to ensure C linkage.
+ */
+#ifdef __cplusplus
+/**
+ * @brief Ensures C linkage for C++ compilers.
+ *
+ * The `extern "C"` block is used to prevent name mangling by C++ compilers,
+ * ensuring that the enclosed declarations use C linkage. This is necessary
+ * when the header is included in C++ projects to maintain compatibility
+ * with C libraries.
+ */
+extern "C" {
+#endif
+
+/**
  * @brief Initialize the memory pool manager.
  * 
  * @param manager Pointer to the pool manager.
  * @param pool_count Number of pools to be managed.
  */
-void json_pool_manager_init(JPoolManager* manager, size_t pool_count);
+JSON_API void json_pool_manager_init(JPoolManager* manager, size_t pool_count);
 
 /**
  * @brief Allocate memory from the pool.
@@ -197,7 +219,7 @@ void json_pool_manager_init(JPoolManager* manager, size_t pool_count);
  * @param size Size of memory to allocate.
  * @return Pointer to the allocated memory.
  */
-void* json_pool_alloc(JPoolManager* manager, size_t size);
+JSON_API void* json_pool_alloc(JPoolManager* manager, size_t size);
 
 /**
  * @brief Free a specific pool.
@@ -206,21 +228,21 @@ void* json_pool_alloc(JPoolManager* manager, size_t size);
  * @param index Index of the pool to free.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_pool_manager_free_pool(JPoolManager* manager, size_t index);
+JSON_API int json_pool_manager_free_pool(JPoolManager* manager, size_t index);
 
 /**
  * @brief Free all pools managed by the pool manager.
  * 
  * @param manager Pointer to the pool manager.
  */
-void json_pool_manager_free_pools(JPoolManager* manager);
+JSON_API void json_pool_manager_free_pools(JPoolManager* manager);
 
 /**
  * @brief Skip whitespace characters in the JSON string.
  * 
  * @param str Pointer to the JSON string pointer.
  */
-void json_skip_whitespace(const char** str);
+JSON_API void json_skip_whitespace(const char** str);
 
 /**
  * @brief Parse a JSON string value.
@@ -229,7 +251,7 @@ void json_skip_whitespace(const char** str);
  * @param str Pointer to the JSON string pointer.
  * @return Pointer to the parsed string.
  */
-char* json_parse_string(JPoolManager* manager, const char** str);
+JSON_API char* json_parse_string(JPoolManager* manager, const char** str);
 
 /**
  * @brief Parse a JSON null value.
@@ -237,7 +259,7 @@ char* json_parse_string(JPoolManager* manager, const char** str);
  * @param str Pointer to the JSON string pointer.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_null(const char** str);
+JSON_API int json_parse_null(const char** str);
 
 /**
  * @brief Parse a JSON boolean value.
@@ -246,7 +268,7 @@ int json_parse_null(const char** str);
  * @param value Pointer to the boolean value to store the result.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_bool(const char** str, bool* value);
+JSON_API int json_parse_bool(const char** str, bool* value);
 
 /**
  * @brief Parse a JSON integer value.
@@ -255,7 +277,7 @@ int json_parse_bool(const char** str, bool* value);
  * @param value Pointer to the integer value to store the result.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_int(const char** str, int64_t* value);
+JSON_API int json_parse_int(const char** str, int64_t* value);
 
 /**
  * @brief Parse a JSON floating-point value.
@@ -264,7 +286,7 @@ int json_parse_int(const char** str, int64_t* value);
  * @param value Pointer to the double value to store the result.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_float(const char** str, double* value);
+JSON_API int json_parse_float(const char** str, double* value);
 
 /**
  * @brief Parse a JSON property (key-value pair).
@@ -274,7 +296,7 @@ int json_parse_float(const char** str, double* value);
  * @param str Pointer to the JSON string pointer.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_property(JPoolManager* manager, JObject* obj, const char** str);
+JSON_API int json_parse_property(JPoolManager* manager, JObject* obj, const char** str);
 
 /**
  * @brief Parse a JSON object.
@@ -284,7 +306,7 @@ int json_parse_property(JPoolManager* manager, JObject* obj, const char** str);
  * @param str Pointer to the JSON string pointer.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_object(JPoolManager* manager, JObject* obj, const char** str);
+JSON_API int json_parse_object(JPoolManager* manager, JObject* obj, const char** str);
 
 /**
  * @brief Parse a JSON array.
@@ -294,7 +316,7 @@ int json_parse_object(JPoolManager* manager, JObject* obj, const char** str);
  * @param str Pointer to the JSON string pointer.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_array(JPoolManager* manager, JArray* array, const char** str);
+JSON_API int json_parse_array(JPoolManager* manager, JArray* array, const char** str);
 
 /**
  * @brief Parse a generic JSON value.
@@ -304,7 +326,7 @@ int json_parse_array(JPoolManager* manager, JArray* array, const char** str);
  * @param str Pointer to the JSON string pointer.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_parse_value(JPoolManager* manager, JValue* value, const char** str);
+JSON_API int json_parse_value(JPoolManager* manager, JValue* value, const char** str);
 
 /**
  * @brief Serialize a JSON object to a string buffer with indentation.
@@ -315,7 +337,7 @@ int json_parse_value(JPoolManager* manager, JValue* value, const char** str);
  * @param indent The number of spaces for indentation. Use 0 for no indentation.
  * @return The length of the serialized string, or -1 if the buffer is too small.
  */
-int json_serialize_object_to_string(char* buffer, size_t size, JObject* obj, int indent);
+JSON_API int json_serialize_object_to_string(char* buffer, size_t size, JObject* obj, int indent);
 
 /**
  * @brief Serialize a JSON array to a string buffer with indentation.
@@ -326,7 +348,7 @@ int json_serialize_object_to_string(char* buffer, size_t size, JObject* obj, int
  * @param indent The number of spaces for indentation. Use 0 for no indentation.
  * @return The length of the serialized string, or -1 if the buffer is too small.
  */
-int json_serialize_array_to_string(char* buffer, size_t size, JArray* array, int indent);
+JSON_API int json_serialize_array_to_string(char* buffer, size_t size, JArray* array, int indent);
 
 /**
  * @brief Serialize a generic JSON value to a string buffer with indentation.
@@ -337,7 +359,7 @@ int json_serialize_array_to_string(char* buffer, size_t size, JArray* array, int
  * @param indent The number of spaces for indentation. Use 0 for no indentation.
  * @return The length of the serialized string, or -1 if the buffer is too small.
  */
-int json_serialize_value_to_string(char* buffer, size_t size, JValue* value, int indent);
+JSON_API int json_serialize_value_to_string(char* buffer, size_t size, JValue* value, int indent);
 
 /**
  * @brief Serialize a JSON string value to a string buffer.
@@ -347,7 +369,7 @@ int json_serialize_value_to_string(char* buffer, size_t size, JValue* value, int
  * @param size Size of the buffer.
  * @return The length of the serialized string, or -1 if the buffer is too small.
  */
-int json_serialize_string_to_buffer(const char* str, char* buffer, size_t size);
+JSON_API int json_serialize_string_to_buffer(const char* str, char* buffer, size_t size);
 
 /**
  * @brief Serialize a JSON object to a file with indentation.
@@ -356,7 +378,7 @@ int json_serialize_string_to_buffer(const char* str, char* buffer, size_t size);
  * @param obj Pointer to the JSON object to serialize.
  * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_object_to_file(FILE* file, JObject* obj, int indent);
+JSON_API void json_serialize_object_to_file(FILE* file, JObject* obj, int indent);
 
 /**
  * @brief Serialize a JSON array to a file with indentation.
@@ -365,7 +387,7 @@ void json_serialize_object_to_file(FILE* file, JObject* obj, int indent);
  * @param array Pointer to the JSON array to serialize.
  * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_array_to_file(FILE* file, JArray* array, int indent);
+JSON_API void json_serialize_array_to_file(FILE* file, JArray* array, int indent);
 
 /**
  * @brief Serialize a generic JSON value to a file with indentation.
@@ -374,7 +396,7 @@ void json_serialize_array_to_file(FILE* file, JArray* array, int indent);
  * @param value Pointer to the JSON value to serialize.
  * @param indent The number of spaces for indentation. Use 0 for no indentation.
  */
-void json_serialize_value_to_file(FILE* file, JValue* value, int indent);
+JSON_API void json_serialize_value_to_file(FILE* file, JValue* value, int indent);
 
 /**
  * @brief Serialize a JSON string to a file.
@@ -382,7 +404,7 @@ void json_serialize_value_to_file(FILE* file, JValue* value, int indent);
  * @param str Pointer to the JSON string to serialize.
  * @param file File pointer to write the serialized data.
  */
-void json_serialize_string_to_file(const char* str, FILE* file);
+JSON_API void json_serialize_string_to_file(const char* str, FILE* file);
 
 /**
  * @brief Add a property to a JSON object.
@@ -392,7 +414,7 @@ void json_serialize_string_to_file(const char* str, FILE* file);
  * @param value Pointer to the value.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_object_add_property(JObject* obj, const char* key, JValue* value);
+JSON_API int json_object_add_property(JObject* obj, const char* key, JValue* value);
 
 /**
  * @brief Add an element to a JSON array.
@@ -401,7 +423,7 @@ int json_object_add_property(JObject* obj, const char* key, JValue* value);
  * @param value Pointer to the value.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_array_add_element(JArray* array, JValue* value);
+JSON_API int json_array_add_element(JArray* array, JValue* value);
 
 /**
  * @brief Get an element from a JSON array by index.
@@ -411,7 +433,7 @@ int json_array_add_element(JArray* array, JValue* value);
  * @param value Pointer to the value to store the retrieved element.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_array_get_element(const JArray* array, size_t index, JValue** value);
+JSON_API int json_array_get_element(const JArray* array, size_t index, JValue** value);
 
 /**
  * @brief Get a property from a JSON object by index.
@@ -421,7 +443,7 @@ int json_array_get_element(const JArray* array, size_t index, JValue** value);
  * @param property Pointer to the property to store the retrieved property.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_object_get_property_by_index(const JObject* obj, size_t index, JProperty** property);
+JSON_API int json_object_get_property_by_index(const JObject* obj, size_t index, JProperty** property);
 
 /**
  * @brief Get a property from a JSON object by key.
@@ -431,7 +453,7 @@ int json_object_get_property_by_index(const JObject* obj, size_t index, JPropert
  * @param property Pointer to the property to store the retrieved property.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_object_get_property(const JObject* obj, const char* key, JProperty** property);
+JSON_API int json_object_get_property(const JObject* obj, const char* key, JProperty** property);
 
 /**
  * @brief Remove an element from a JSON array by index.
@@ -440,7 +462,7 @@ int json_object_get_property(const JObject* obj, const char* key, JProperty** pr
  * @param index Index of the element to remove.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_array_remove_element(JArray* array, size_t index);
+JSON_API int json_array_remove_element(JArray* array, size_t index);
 
 /**
  * @brief Remove a property from a JSON object by index.
@@ -449,7 +471,7 @@ int json_array_remove_element(JArray* array, size_t index);
  * @param index Index of the property to remove.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_object_remove_property_by_index(JObject* obj, size_t index);
+JSON_API int json_object_remove_property_by_index(JObject* obj, size_t index);
 
 /**
  * @brief Remove a property from a JSON object by key.
@@ -458,6 +480,10 @@ int json_object_remove_property_by_index(JObject* obj, size_t index);
  * @param key Pointer to the key string.
  * @return Status code (1 on success, 0 on failure).
  */
-int json_object_remove_property(JObject* obj, const char* key);
+JSON_API int json_object_remove_property(JObject* obj, const char* key);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif // JSON_H

@@ -1,19 +1,14 @@
-cmake_minimum_required(VERSION 3.10)
-project(main)
+cmake_minimum_required(VERSION 3.5)
+project(tinyjson)
 
-# Set the C standard
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED True)
+# Set output directory for all binaries (libs and executables)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Source and include directories
-include_directories("tinyjson")
-add_subdirectory("tinyjson")
+# Add subdirectories
+add_subdirectory(tinyjson)
 
-# Main executable
 add_executable(main main.c)
-add_library(testinyjson "tests/unit.c")
-
-# Link the tinyjson library and test files
-target_include_directories(testinyjson PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(testinyjson tinyjson)
-target_link_libraries(main testinyjson)
+target_link_libraries(main tinyjson_shared)
+target_include_directories(main PRIVATE ${CMAKE_SOURCE_DIR}/tinyjson)

@@ -1,34 +1,35 @@
-# Compiler
-CC = clang
+LIBRARY_NAME = tinyjson
+SHARED_LIB = lib$(LIBRARY_NAME).so
+STATIC_LIB = lib$(LIBRARY_NAME).a
+EXECUTABLE = main
+TEST_EXECUTABLE = test_json
 
-# Directories
-SRC_DIR = tinyjson
-TEST_DIR = tests
-BUILD_DIR = build
+SRC_FILES = json.c
+HEADER_FILES = json.h _export.h
+TEST_SRC = unit.c
 
-# Source files
-SRC_FILES = $(SRC_DIR)/json.c $(TEST_DIR)/unit.c main.c
+CC = gcc
+CFLAGS = -Wall -Wextra -Itinyjson
+LDFLAGS = -L. -l$(LIBRARY_NAME) -Wl,-rpath,.
 
-# Include directories
-INCLUDES = -I$(SRC_DIR)
+all: $(SHARED_LIB) $(STATIC_LIB) $(EXECUTABLE) $(TEST_EXECUTABLE)
 
-# Compiler flags
-CFLAGS = -Wall -Wextra -g
+$(SHARED_LIB): $(SRC_FILES) $(HEADER_FILES)
+	$(CC) $(CFLAGS) -shared -o $@ $(SRC_FILES)
 
-# Output executable
-TARGET = $(BUILD_DIR)/tinyjson
+$(STATIC_LIB): $(SRC_FILES) $(HEADER_FILES)
+	ar rcs $@ $(SRC_FILES:.c=.o)
 
-# Make rules
-all: $(TARGET)
+$(EXECUTABLE): main.c $(SHARED_LIB)
+	$(CC) $(CFLAGS) -o $@ main.c $(LDFLAGS)
 
-$(TARGET): $(SRC_FILES)
-	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_FILES) -o $(TARGET)
+$(TEST_EXECUTABLE): $(TEST_SRC) $(STATIC_LIB)
+	$(CC) $(CFLAGS) -o $@ $(TEST_SRC) $(LDFLAGS)
 
-check:
-	${TARGET}
+check: $(TEST_EXECUTABLE)
+	./$(TEST_EXECUTABLE)
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -f $(SHARED_LIB) $(STATIC_LIB) $(EXECUTABLE) $(TEST_EXECUTABLE) *.o
 
-.PHONY: all clean
+.PHONY: all clean check
