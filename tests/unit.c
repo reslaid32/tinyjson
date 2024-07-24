@@ -243,3 +243,62 @@ void test_json_object_get_property() {
     assert(strcmp(retrieved_property->key, "key") == 0);
     assert(retrieved_property->value.T == JSON_VALUE_TYPE_NULL);
 }
+
+void test_json_array_remove_element() {
+    JArray array = { .element_count = 1 };
+    JValue value;
+    value.T = JSON_VALUE_TYPE_BOOLEAN;
+    value.V.boolean_value = true;
+    array.elements[0] = value;
+
+    JValue* retrieved_value;
+    int result = json_array_get_element(&array, 0, &retrieved_value);
+
+    assert(result == 1);
+    assert(retrieved_value->T == JSON_VALUE_TYPE_BOOLEAN);
+    assert(retrieved_value->V.boolean_value == true);
+
+    result = json_array_remove_element(&array, 0);
+    assert(result == 1);
+    assert(array.element_count == 0);
+}
+
+void test_json_object_remove_property_by_index() {
+    JObject obj = { .property_count = 1 };
+    JProperty property;
+    property.key = "key";
+    property.value.T = JSON_VALUE_TYPE_REAL;
+    property.value.V.real_value = 3.14;
+    obj.properties[0] = property;
+
+    JProperty* retrieved_property;
+    int result = json_object_get_property_by_index(&obj, 0, &retrieved_property);
+
+    assert(result == 1);
+    assert(strcmp(retrieved_property->key, "key") == 0);
+    assert(retrieved_property->value.T == JSON_VALUE_TYPE_REAL);
+    assert(retrieved_property->value.V.real_value == 3.14);
+
+    result = json_object_remove_property_by_index(&obj, 0);
+    assert(result == 1);
+    assert(obj.property_count == 0);
+}
+
+void test_json_object_remove_property() {
+    JObject obj = { .property_count = 1 };
+    JProperty property;
+    property.key = "key";
+    property.value.T = JSON_VALUE_TYPE_NULL;
+    obj.properties[0] = property;
+
+    JProperty* retrieved_property;
+    int result = json_object_get_property(&obj, "key", &retrieved_property);
+
+    assert(result == 1);
+    assert(strcmp(retrieved_property->key, "key") == 0);
+    assert(retrieved_property->value.T == JSON_VALUE_TYPE_NULL);
+
+    result = json_object_remove_property(&obj, "key");
+    assert(result == 1);
+    assert(obj.property_count == 0);
+}

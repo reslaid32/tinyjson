@@ -278,6 +278,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a1e9aa33c7a8327a299266a4fd065c19a" id="r_a1e9aa33c7a8327a299266a4fd065c19a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9aa33c7a8327a299266a4fd065c19a">json_object_get_property</a> (const <a class="el" href="#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key, <a class="el" href="#a1387c227b2cbdd56d75e3d768992c5d7">JProperty</a> **property)</td></tr>
 <tr class="memdesc:a1e9aa33c7a8327a299266a4fd065c19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a property from a JSON object by key.  <br /></td></tr>
 <tr class="separator:a1e9aa33c7a8327a299266a4fd065c19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa7dbc2e430431a07c93e8b89f5c0030" id="r_aaa7dbc2e430431a07c93e8b89f5c0030"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa7dbc2e430431a07c93e8b89f5c0030">json_array_remove_element</a> (<a class="el" href="#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, size_t index)</td></tr>
+<tr class="memdesc:aaa7dbc2e430431a07c93e8b89f5c0030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from a JSON array by index.  <br /></td></tr>
+<tr class="separator:aaa7dbc2e430431a07c93e8b89f5c0030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe60868c7bb0f5fd6ef0094e8e023fab" id="r_abe60868c7bb0f5fd6ef0094e8e023fab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe60868c7bb0f5fd6ef0094e8e023fab">json_object_remove_property_by_index</a> (<a class="el" href="#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, size_t index)</td></tr>
+<tr class="memdesc:abe60868c7bb0f5fd6ef0094e8e023fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a property from a JSON object by index.  <br /></td></tr>
+<tr class="separator:abe60868c7bb0f5fd6ef0094e8e023fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86f4162e13d64324bee73dfc780eb868" id="r_a86f4162e13d64324bee73dfc780eb868"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86f4162e13d64324bee73dfc780eb868">json_object_remove_property</a> (<a class="el" href="#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key)</td></tr>
+<tr class="memdesc:a86f4162e13d64324bee73dfc780eb868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a property from a JSON object by key.  <br /></td></tr>
+<tr class="separator:a86f4162e13d64324bee73dfc780eb868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A JSON parser and serializer in C. </p>
@@ -684,6 +693,37 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aaa7dbc2e430431a07c93e8b89f5c0030" name="aaa7dbc2e430431a07c93e8b89f5c0030"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa7dbc2e430431a07c93e8b89f5c0030">&#9670;&#160;</a></span>json_array_remove_element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int json_array_remove_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove an element from a JSON array by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Pointer to the JSON array. </td></tr>
+    <tr><td class="paramname">index</td><td>Index of the element to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status code (1 on success, 0 on failure). </dd></dl>
+
+</div>
+</div>
 <a id="a6857adbfee1fddf0c6415f23f7230ffc" name="a6857adbfee1fddf0c6415f23f7230ffc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6857adbfee1fddf0c6415f23f7230ffc">&#9670;&#160;</a></span>json_object_add_property()</h2>
 
@@ -788,6 +828,68 @@ Functions</h2></td></tr>
     <tr><td class="paramname">obj</td><td>Pointer to the JSON object. </td></tr>
     <tr><td class="paramname">index</td><td>Index of the property to retrieve. </td></tr>
     <tr><td class="paramname">property</td><td>Pointer to the property to store the retrieved property. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status code (1 on success, 0 on failure). </dd></dl>
+
+</div>
+</div>
+<a id="a86f4162e13d64324bee73dfc780eb868" name="a86f4162e13d64324bee73dfc780eb868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f4162e13d64324bee73dfc780eb868">&#9670;&#160;</a></span>json_object_remove_property()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int json_object_remove_property </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a property from a JSON object by key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Pointer to the JSON object. </td></tr>
+    <tr><td class="paramname">key</td><td>Pointer to the key string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status code (1 on success, 0 on failure). </dd></dl>
+
+</div>
+</div>
+<a id="abe60868c7bb0f5fd6ef0094e8e023fab" name="abe60868c7bb0f5fd6ef0094e8e023fab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe60868c7bb0f5fd6ef0094e8e023fab">&#9670;&#160;</a></span>json_object_remove_property_by_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int json_object_remove_property_by_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a property from a JSON object by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Pointer to the JSON object. </td></tr>
+    <tr><td class="paramname">index</td><td>Index of the property to remove. </td></tr>
   </table>
   </dd>
 </dl>

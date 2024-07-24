@@ -387,3 +387,27 @@ Get a property from a JSON object by key.
 ```c
 int json_object_get_property(const JObject* obj, const char* key, JProperty** property);
 ```
+
+### `json_array_remove_element`
+
+Remove an element from a JSON array by index.
+
+```c
+int json_array_remove_element(JArray* array, size_t index);
+```
+
+### `json_object_remove_property_by_index`
+
+Remove a property from a JSON object by index.
+
+```c
+int json_object_remove_property_by_index(JObject* obj, size_t index);
+```
+
+### `json_object_remove_property`
+
+Remove a property from a JSON object by key.
+
+```c
+int json_object_remove_property(JObject* obj, const char* key);
+```

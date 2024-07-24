@@ -433,4 +433,31 @@ int json_object_get_property_by_index(const JObject* obj, size_t index, JPropert
  */
 int json_object_get_property(const JObject* obj, const char* key, JProperty** property);
 
+/**
+ * @brief Remove an element from a JSON array by index.
+ * 
+ * @param array Pointer to the JSON array.
+ * @param index Index of the element to remove.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_array_remove_element(JArray* array, size_t index);
+
+/**
+ * @brief Remove a property from a JSON object by index.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param index Index of the property to remove.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_remove_property_by_index(JObject* obj, size_t index);
+
+/**
+ * @brief Remove a property from a JSON object by key.
+ * 
+ * @param obj Pointer to the JSON object.
+ * @param key Pointer to the key string.
+ * @return Status code (1 on success, 0 on failure).
+ */
+int json_object_remove_property(JObject* obj, const char* key);
+
 #endif // JSON_H
