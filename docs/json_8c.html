@@ -90,6 +90,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">json.c File Reference</div></div>
 </div><!--header-->
@@ -103,98 +104,103 @@ $(function(){ initResizable(false); });
 <code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="json_8h_source.html">json.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1ae956a9759bb26a91b8379959f2bc85" id="r_a1ae956a9759bb26a91b8379959f2bc85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ae956a9759bb26a91b8379959f2bc85">JSON_LIBRARY_BUILD</a></td></tr>
+<tr class="separator:a1ae956a9759bb26a91b8379959f2bc85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af8c2f83adebba14356e6c72e18b536c5" id="r_af8c2f83adebba14356e6c72e18b536c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8c2f83adebba14356e6c72e18b536c5">json_pool_manager_init</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, size_t pool_count)</td></tr>
-<tr class="memdesc:af8c2f83adebba14356e6c72e18b536c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the memory pool manager.  <br /></td></tr>
-<tr class="separator:af8c2f83adebba14356e6c72e18b536c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac622885baf73888269e96bdaae1710ee" id="r_ac622885baf73888269e96bdaae1710ee"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac622885baf73888269e96bdaae1710ee">json_pool_alloc</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, size_t size)</td></tr>
-<tr class="memdesc:ac622885baf73888269e96bdaae1710ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory from the pool.  <br /></td></tr>
-<tr class="separator:ac622885baf73888269e96bdaae1710ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85194ff6cfd842c60e47a7fe33ac4c24" id="r_a85194ff6cfd842c60e47a7fe33ac4c24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85194ff6cfd842c60e47a7fe33ac4c24">json_pool_manager_free_pool</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, size_t index)</td></tr>
-<tr class="memdesc:a85194ff6cfd842c60e47a7fe33ac4c24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a specific pool.  <br /></td></tr>
-<tr class="separator:a85194ff6cfd842c60e47a7fe33ac4c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b05e2c6904dc5ff19dad540f769f59e" id="r_a8b05e2c6904dc5ff19dad540f769f59e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b05e2c6904dc5ff19dad540f769f59e">json_pool_manager_free_pools</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager)</td></tr>
-<tr class="memdesc:a8b05e2c6904dc5ff19dad540f769f59e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all pools managed by the pool manager.  <br /></td></tr>
-<tr class="separator:a8b05e2c6904dc5ff19dad540f769f59e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0b408f56db5bd95977053050a8865be" id="r_aa0b408f56db5bd95977053050a8865be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0b408f56db5bd95977053050a8865be">json_skip_whitespace</a> (const char **str)</td></tr>
-<tr class="memdesc:aa0b408f56db5bd95977053050a8865be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skip whitespace characters in the JSON string.  <br /></td></tr>
-<tr class="separator:aa0b408f56db5bd95977053050a8865be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a123d731526e36bdbac9fe0ab607d26d2" id="r_a123d731526e36bdbac9fe0ab607d26d2"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a123d731526e36bdbac9fe0ab607d26d2">json_parse_string</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, const char **str)</td></tr>
-<tr class="memdesc:a123d731526e36bdbac9fe0ab607d26d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON string value.  <br /></td></tr>
-<tr class="separator:a123d731526e36bdbac9fe0ab607d26d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47fd775387431ae13a34da863ee61148" id="r_a47fd775387431ae13a34da863ee61148"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47fd775387431ae13a34da863ee61148">json_parse_null</a> (const char **str)</td></tr>
-<tr class="memdesc:a47fd775387431ae13a34da863ee61148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON null value.  <br /></td></tr>
-<tr class="separator:a47fd775387431ae13a34da863ee61148"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a774250dcdb1f80385a44f0c86af48646" id="r_a774250dcdb1f80385a44f0c86af48646"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a774250dcdb1f80385a44f0c86af48646">json_parse_bool</a> (const char **str, bool *value)</td></tr>
-<tr class="memdesc:a774250dcdb1f80385a44f0c86af48646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON boolean value.  <br /></td></tr>
-<tr class="separator:a774250dcdb1f80385a44f0c86af48646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cfad6d4ebe582592b8c75cda94cab93" id="r_a9cfad6d4ebe582592b8c75cda94cab93"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cfad6d4ebe582592b8c75cda94cab93">json_parse_int</a> (const char **str, int64_t *value)</td></tr>
-<tr class="memdesc:a9cfad6d4ebe582592b8c75cda94cab93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON integer value.  <br /></td></tr>
-<tr class="separator:a9cfad6d4ebe582592b8c75cda94cab93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a161fbfd9a6bc0685bca36cd53d888a9f" id="r_a161fbfd9a6bc0685bca36cd53d888a9f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a161fbfd9a6bc0685bca36cd53d888a9f">json_parse_float</a> (const char **str, double *value)</td></tr>
-<tr class="memdesc:a161fbfd9a6bc0685bca36cd53d888a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON floating-point value.  <br /></td></tr>
-<tr class="separator:a161fbfd9a6bc0685bca36cd53d888a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b9a322484e30a7412439a90fa43ee9e" id="r_a7b9a322484e30a7412439a90fa43ee9e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b9a322484e30a7412439a90fa43ee9e">json_parse_property</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char **str)</td></tr>
-<tr class="memdesc:a7b9a322484e30a7412439a90fa43ee9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON property (key-value pair).  <br /></td></tr>
-<tr class="separator:a7b9a322484e30a7412439a90fa43ee9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a580e17001780124ea2281fb6734d8f08" id="r_a580e17001780124ea2281fb6734d8f08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a580e17001780124ea2281fb6734d8f08">json_parse_object</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char **str)</td></tr>
-<tr class="memdesc:a580e17001780124ea2281fb6734d8f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON object.  <br /></td></tr>
-<tr class="separator:a580e17001780124ea2281fb6734d8f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61b5cec2ca208be4f22338852740be17" id="r_a61b5cec2ca208be4f22338852740be17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61b5cec2ca208be4f22338852740be17">json_parse_array</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, const char **str)</td></tr>
-<tr class="memdesc:a61b5cec2ca208be4f22338852740be17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON array.  <br /></td></tr>
-<tr class="separator:a61b5cec2ca208be4f22338852740be17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e8fa533df9881afacc68b410b12de9" id="r_a08e8fa533df9881afacc68b410b12de9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08e8fa533df9881afacc68b410b12de9">json_parse_value</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value, const char **str)</td></tr>
-<tr class="memdesc:a08e8fa533df9881afacc68b410b12de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a generic JSON value.  <br /></td></tr>
-<tr class="separator:a08e8fa533df9881afacc68b410b12de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3502f8bbb4ecadfe6011f227ba12b3b9" id="r_a3502f8bbb4ecadfe6011f227ba12b3b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3502f8bbb4ecadfe6011f227ba12b3b9">json_serialize_object_to_string</a> (char *buffer, size_t size, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, int indent)</td></tr>
-<tr class="memdesc:a3502f8bbb4ecadfe6011f227ba12b3b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON object to a string buffer with indentation.  <br /></td></tr>
-<tr class="separator:a3502f8bbb4ecadfe6011f227ba12b3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80b1bb4c78817ef5525b12984b80e5cc" id="r_a80b1bb4c78817ef5525b12984b80e5cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80b1bb4c78817ef5525b12984b80e5cc">json_serialize_array_to_string</a> (char *buffer, size_t size, <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, int indent)</td></tr>
-<tr class="memdesc:a80b1bb4c78817ef5525b12984b80e5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON array to a string buffer with indentation.  <br /></td></tr>
-<tr class="separator:a80b1bb4c78817ef5525b12984b80e5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef5499fdbe08b72030cdbceaf38674ba" id="r_aef5499fdbe08b72030cdbceaf38674ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef5499fdbe08b72030cdbceaf38674ba">json_serialize_value_to_string</a> (char *buffer, size_t size, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value, int indent)</td></tr>
-<tr class="memdesc:aef5499fdbe08b72030cdbceaf38674ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a generic JSON value to a string buffer with indentation.  <br /></td></tr>
-<tr class="separator:aef5499fdbe08b72030cdbceaf38674ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d91f2fad191fbf755b4b4b76617bf8" id="r_aa3d91f2fad191fbf755b4b4b76617bf8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3d91f2fad191fbf755b4b4b76617bf8">json_serialize_string_to_buffer</a> (const char *str, char *buffer, size_t size)</td></tr>
-<tr class="memdesc:aa3d91f2fad191fbf755b4b4b76617bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON string to a string buffer.  <br /></td></tr>
-<tr class="separator:aa3d91f2fad191fbf755b4b4b76617bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadbd0a3ffc0235682029ea220f3a02f4" id="r_aadbd0a3ffc0235682029ea220f3a02f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadbd0a3ffc0235682029ea220f3a02f4">json_serialize_object_to_file</a> (FILE *file, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, int indent)</td></tr>
-<tr class="memdesc:aadbd0a3ffc0235682029ea220f3a02f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON object to a file with indentation.  <br /></td></tr>
-<tr class="separator:aadbd0a3ffc0235682029ea220f3a02f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a771623d9f20c7a657b862d35b2ce0c2f" id="r_a771623d9f20c7a657b862d35b2ce0c2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a771623d9f20c7a657b862d35b2ce0c2f">json_serialize_array_to_file</a> (FILE *file, <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, int indent)</td></tr>
-<tr class="memdesc:a771623d9f20c7a657b862d35b2ce0c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON array to a file with indentation.  <br /></td></tr>
-<tr class="separator:a771623d9f20c7a657b862d35b2ce0c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ea0d595e5efdc0cced40926e8f66088" id="r_a1ea0d595e5efdc0cced40926e8f66088"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ea0d595e5efdc0cced40926e8f66088">json_serialize_value_to_file</a> (FILE *file, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value, int indent)</td></tr>
-<tr class="memdesc:a1ea0d595e5efdc0cced40926e8f66088"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a generic JSON value to a file with indentation.  <br /></td></tr>
-<tr class="separator:a1ea0d595e5efdc0cced40926e8f66088"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97bdb789bb50c8569c1fde9bb6f144b0" id="r_a97bdb789bb50c8569c1fde9bb6f144b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97bdb789bb50c8569c1fde9bb6f144b0">json_serialize_string_to_file</a> (const char *str, FILE *file)</td></tr>
-<tr class="memdesc:a97bdb789bb50c8569c1fde9bb6f144b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON string to a file.  <br /></td></tr>
-<tr class="separator:a97bdb789bb50c8569c1fde9bb6f144b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6857adbfee1fddf0c6415f23f7230ffc" id="r_a6857adbfee1fddf0c6415f23f7230ffc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6857adbfee1fddf0c6415f23f7230ffc">json_object_add_property</a> (<a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value)</td></tr>
-<tr class="memdesc:a6857adbfee1fddf0c6415f23f7230ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a property to a JSON object.  <br /></td></tr>
-<tr class="separator:a6857adbfee1fddf0c6415f23f7230ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0df9808c682f44c69faa6aeb19aff092" id="r_a0df9808c682f44c69faa6aeb19aff092"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0df9808c682f44c69faa6aeb19aff092">json_array_add_element</a> (<a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value)</td></tr>
-<tr class="memdesc:a0df9808c682f44c69faa6aeb19aff092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an element to a JSON array.  <br /></td></tr>
-<tr class="separator:a0df9808c682f44c69faa6aeb19aff092"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b11c1cd4ee6fec00678d09e4e40abb1" id="r_a0b11c1cd4ee6fec00678d09e4e40abb1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b11c1cd4ee6fec00678d09e4e40abb1">json_array_get_element</a> (const <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, size_t index, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> **value)</td></tr>
-<tr class="memdesc:a0b11c1cd4ee6fec00678d09e4e40abb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element from a JSON array by index.  <br /></td></tr>
-<tr class="separator:a0b11c1cd4ee6fec00678d09e4e40abb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a553e37423957065c811f5b0d0ba45e3c" id="r_a553e37423957065c811f5b0d0ba45e3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a553e37423957065c811f5b0d0ba45e3c">json_object_get_property_by_index</a> (const <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, size_t index, <a class="el" href="json_8h.html#a1387c227b2cbdd56d75e3d768992c5d7">JProperty</a> **property)</td></tr>
-<tr class="memdesc:a553e37423957065c811f5b0d0ba45e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a property from a JSON object by index.  <br /></td></tr>
-<tr class="separator:a553e37423957065c811f5b0d0ba45e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e9aa33c7a8327a299266a4fd065c19a" id="r_a1e9aa33c7a8327a299266a4fd065c19a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9aa33c7a8327a299266a4fd065c19a">json_object_get_property</a> (const <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key, <a class="el" href="json_8h.html#a1387c227b2cbdd56d75e3d768992c5d7">JProperty</a> **property)</td></tr>
-<tr class="memdesc:a1e9aa33c7a8327a299266a4fd065c19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a property from a JSON object by key.  <br /></td></tr>
-<tr class="separator:a1e9aa33c7a8327a299266a4fd065c19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa7dbc2e430431a07c93e8b89f5c0030" id="r_aaa7dbc2e430431a07c93e8b89f5c0030"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa7dbc2e430431a07c93e8b89f5c0030">json_array_remove_element</a> (<a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, size_t index)</td></tr>
-<tr class="memdesc:aaa7dbc2e430431a07c93e8b89f5c0030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from a JSON array by index.  <br /></td></tr>
-<tr class="separator:aaa7dbc2e430431a07c93e8b89f5c0030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe60868c7bb0f5fd6ef0094e8e023fab" id="r_abe60868c7bb0f5fd6ef0094e8e023fab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe60868c7bb0f5fd6ef0094e8e023fab">json_object_remove_property_by_index</a> (<a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, size_t index)</td></tr>
-<tr class="memdesc:abe60868c7bb0f5fd6ef0094e8e023fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a property from a JSON object by index.  <br /></td></tr>
-<tr class="separator:abe60868c7bb0f5fd6ef0094e8e023fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86f4162e13d64324bee73dfc780eb868" id="r_a86f4162e13d64324bee73dfc780eb868"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86f4162e13d64324bee73dfc780eb868">json_object_remove_property</a> (<a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key)</td></tr>
-<tr class="memdesc:a86f4162e13d64324bee73dfc780eb868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a property from a JSON object by key.  <br /></td></tr>
-<tr class="separator:a86f4162e13d64324bee73dfc780eb868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6d66f9ccdab375d329c0c6211e473e" id="r_a0a6d66f9ccdab375d329c0c6211e473e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a6d66f9ccdab375d329c0c6211e473e">json_pool_manager_init</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, size_t pool_count)</td></tr>
+<tr class="memdesc:a0a6d66f9ccdab375d329c0c6211e473e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the memory pool manager.  <br /></td></tr>
+<tr class="separator:a0a6d66f9ccdab375d329c0c6211e473e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c14dd7607b977faa14c0fa993130f18" id="r_a1c14dd7607b977faa14c0fa993130f18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c14dd7607b977faa14c0fa993130f18">json_pool_alloc</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, size_t size)</td></tr>
+<tr class="memdesc:a1c14dd7607b977faa14c0fa993130f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory from the pool.  <br /></td></tr>
+<tr class="separator:a1c14dd7607b977faa14c0fa993130f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02dc3ce9691fe6b378564c854f9559d1" id="r_a02dc3ce9691fe6b378564c854f9559d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02dc3ce9691fe6b378564c854f9559d1">json_pool_manager_free_pool</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, size_t index)</td></tr>
+<tr class="memdesc:a02dc3ce9691fe6b378564c854f9559d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a specific pool.  <br /></td></tr>
+<tr class="separator:a02dc3ce9691fe6b378564c854f9559d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5513f92f2f211a9ad75ab69112df86fd" id="r_a5513f92f2f211a9ad75ab69112df86fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5513f92f2f211a9ad75ab69112df86fd">json_pool_manager_free_pools</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager)</td></tr>
+<tr class="memdesc:a5513f92f2f211a9ad75ab69112df86fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all pools managed by the pool manager.  <br /></td></tr>
+<tr class="separator:a5513f92f2f211a9ad75ab69112df86fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eed212b14cbb9c8c1527d55fe076c88" id="r_a2eed212b14cbb9c8c1527d55fe076c88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2eed212b14cbb9c8c1527d55fe076c88">json_skip_whitespace</a> (const char **str)</td></tr>
+<tr class="memdesc:a2eed212b14cbb9c8c1527d55fe076c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skip whitespace characters in the JSON string.  <br /></td></tr>
+<tr class="separator:a2eed212b14cbb9c8c1527d55fe076c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ca73bda4d391797bdb337779ef4943" id="r_a44ca73bda4d391797bdb337779ef4943"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44ca73bda4d391797bdb337779ef4943">json_parse_string</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, const char **str)</td></tr>
+<tr class="memdesc:a44ca73bda4d391797bdb337779ef4943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON string value.  <br /></td></tr>
+<tr class="separator:a44ca73bda4d391797bdb337779ef4943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2229740cf5f94498eade081b23a53de7" id="r_a2229740cf5f94498eade081b23a53de7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2229740cf5f94498eade081b23a53de7">json_parse_null</a> (const char **str)</td></tr>
+<tr class="memdesc:a2229740cf5f94498eade081b23a53de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON null value.  <br /></td></tr>
+<tr class="separator:a2229740cf5f94498eade081b23a53de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da15aaab3e1a8b7bbf93c6475456105" id="r_a4da15aaab3e1a8b7bbf93c6475456105"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4da15aaab3e1a8b7bbf93c6475456105">json_parse_bool</a> (const char **str, bool *value)</td></tr>
+<tr class="memdesc:a4da15aaab3e1a8b7bbf93c6475456105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON boolean value.  <br /></td></tr>
+<tr class="separator:a4da15aaab3e1a8b7bbf93c6475456105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cb95367a25e12d28402c7a0232bf705" id="r_a4cb95367a25e12d28402c7a0232bf705"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cb95367a25e12d28402c7a0232bf705">json_parse_int</a> (const char **str, int64_t *value)</td></tr>
+<tr class="memdesc:a4cb95367a25e12d28402c7a0232bf705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON integer value.  <br /></td></tr>
+<tr class="separator:a4cb95367a25e12d28402c7a0232bf705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3900202c40278bedea7fa0a76c92b3e3" id="r_a3900202c40278bedea7fa0a76c92b3e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3900202c40278bedea7fa0a76c92b3e3">json_parse_float</a> (const char **str, double *value)</td></tr>
+<tr class="memdesc:a3900202c40278bedea7fa0a76c92b3e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON floating-point value.  <br /></td></tr>
+<tr class="separator:a3900202c40278bedea7fa0a76c92b3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92dbc7195fa9a561da62e0f069316f8a" id="r_a92dbc7195fa9a561da62e0f069316f8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92dbc7195fa9a561da62e0f069316f8a">json_parse_property</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char **str)</td></tr>
+<tr class="memdesc:a92dbc7195fa9a561da62e0f069316f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON property (key-value pair).  <br /></td></tr>
+<tr class="separator:a92dbc7195fa9a561da62e0f069316f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb32036be3b46fec49f9ed6bf170fb38" id="r_aeb32036be3b46fec49f9ed6bf170fb38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb32036be3b46fec49f9ed6bf170fb38">json_parse_object</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char **str)</td></tr>
+<tr class="memdesc:aeb32036be3b46fec49f9ed6bf170fb38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON object.  <br /></td></tr>
+<tr class="separator:aeb32036be3b46fec49f9ed6bf170fb38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf25d01fdc8bb50becf71b9dc1848da" id="r_adcf25d01fdc8bb50becf71b9dc1848da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcf25d01fdc8bb50becf71b9dc1848da">json_parse_array</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, const char **str)</td></tr>
+<tr class="memdesc:adcf25d01fdc8bb50becf71b9dc1848da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a JSON array.  <br /></td></tr>
+<tr class="separator:adcf25d01fdc8bb50becf71b9dc1848da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5cc0b20dd28cf52dbe4b1a4ebab3f2" id="r_afb5cc0b20dd28cf52dbe4b1a4ebab3f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb5cc0b20dd28cf52dbe4b1a4ebab3f2">json_parse_value</a> (<a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *manager, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value, const char **str)</td></tr>
+<tr class="memdesc:afb5cc0b20dd28cf52dbe4b1a4ebab3f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a generic JSON value.  <br /></td></tr>
+<tr class="separator:afb5cc0b20dd28cf52dbe4b1a4ebab3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab309b98e813ebe0500a03bc935490a5c" id="r_ab309b98e813ebe0500a03bc935490a5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab309b98e813ebe0500a03bc935490a5c">json_serialize_object_to_string</a> (char *buffer, size_t size, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, int indent)</td></tr>
+<tr class="memdesc:ab309b98e813ebe0500a03bc935490a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON object to a string buffer with indentation.  <br /></td></tr>
+<tr class="separator:ab309b98e813ebe0500a03bc935490a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3798e6bc67b1337ed85949230f5d048a" id="r_a3798e6bc67b1337ed85949230f5d048a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3798e6bc67b1337ed85949230f5d048a">json_serialize_array_to_string</a> (char *buffer, size_t size, <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, int indent)</td></tr>
+<tr class="memdesc:a3798e6bc67b1337ed85949230f5d048a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON array to a string buffer with indentation.  <br /></td></tr>
+<tr class="separator:a3798e6bc67b1337ed85949230f5d048a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab0c5431de4a532f9237e03fba2aeb9" id="r_adab0c5431de4a532f9237e03fba2aeb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adab0c5431de4a532f9237e03fba2aeb9">json_serialize_value_to_string</a> (char *buffer, size_t size, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value, int indent)</td></tr>
+<tr class="memdesc:adab0c5431de4a532f9237e03fba2aeb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a generic JSON value to a string buffer with indentation.  <br /></td></tr>
+<tr class="separator:adab0c5431de4a532f9237e03fba2aeb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac670a31469fe2bf124b19619db7dab54" id="r_ac670a31469fe2bf124b19619db7dab54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac670a31469fe2bf124b19619db7dab54">json_serialize_string_to_buffer</a> (const char *str, char *buffer, size_t size)</td></tr>
+<tr class="memdesc:ac670a31469fe2bf124b19619db7dab54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON string to a string buffer.  <br /></td></tr>
+<tr class="separator:ac670a31469fe2bf124b19619db7dab54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5e2b017ec752fa76a13266f4497deb9" id="r_af5e2b017ec752fa76a13266f4497deb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5e2b017ec752fa76a13266f4497deb9">json_serialize_object_to_file</a> (FILE *file, <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, int indent)</td></tr>
+<tr class="memdesc:af5e2b017ec752fa76a13266f4497deb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON object to a file with indentation.  <br /></td></tr>
+<tr class="separator:af5e2b017ec752fa76a13266f4497deb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac47928d0b5ca2867c7a1cafe81fb416b" id="r_ac47928d0b5ca2867c7a1cafe81fb416b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac47928d0b5ca2867c7a1cafe81fb416b">json_serialize_array_to_file</a> (FILE *file, <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, int indent)</td></tr>
+<tr class="memdesc:ac47928d0b5ca2867c7a1cafe81fb416b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON array to a file with indentation.  <br /></td></tr>
+<tr class="separator:ac47928d0b5ca2867c7a1cafe81fb416b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83f4126e9fa22aa8fdee1f38d720b18" id="r_af83f4126e9fa22aa8fdee1f38d720b18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af83f4126e9fa22aa8fdee1f38d720b18">json_serialize_value_to_file</a> (FILE *file, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value, int indent)</td></tr>
+<tr class="memdesc:af83f4126e9fa22aa8fdee1f38d720b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a generic JSON value to a file with indentation.  <br /></td></tr>
+<tr class="separator:af83f4126e9fa22aa8fdee1f38d720b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b59e65b9cef4aab7002b3e622dafdca" id="r_a9b59e65b9cef4aab7002b3e622dafdca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b59e65b9cef4aab7002b3e622dafdca">json_serialize_string_to_file</a> (const char *str, FILE *file)</td></tr>
+<tr class="memdesc:a9b59e65b9cef4aab7002b3e622dafdca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a JSON string to a file.  <br /></td></tr>
+<tr class="separator:a9b59e65b9cef4aab7002b3e622dafdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d456fcc47d2734e29e81f1c1f8f51a" id="r_a64d456fcc47d2734e29e81f1c1f8f51a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64d456fcc47d2734e29e81f1c1f8f51a">json_object_add_property</a> (<a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value)</td></tr>
+<tr class="memdesc:a64d456fcc47d2734e29e81f1c1f8f51a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a property to a JSON object.  <br /></td></tr>
+<tr class="separator:a64d456fcc47d2734e29e81f1c1f8f51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a593b779c1862c97eba7e64782590de26" id="r_a593b779c1862c97eba7e64782590de26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a593b779c1862c97eba7e64782590de26">json_array_add_element</a> (<a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> *value)</td></tr>
+<tr class="memdesc:a593b779c1862c97eba7e64782590de26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an element to a JSON array.  <br /></td></tr>
+<tr class="separator:a593b779c1862c97eba7e64782590de26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bfa4b0ed410e16a16243a8e8ae5d39c" id="r_a8bfa4b0ed410e16a16243a8e8ae5d39c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bfa4b0ed410e16a16243a8e8ae5d39c">json_array_get_element</a> (const <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, size_t index, <a class="el" href="json_8h.html#a9ddf267f6ada341929a7638f21ccced3">JValue</a> **value)</td></tr>
+<tr class="memdesc:a8bfa4b0ed410e16a16243a8e8ae5d39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element from a JSON array by index.  <br /></td></tr>
+<tr class="separator:a8bfa4b0ed410e16a16243a8e8ae5d39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad439690d2940fbea7d6352b62390ca84" id="r_ad439690d2940fbea7d6352b62390ca84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad439690d2940fbea7d6352b62390ca84">json_object_get_property_by_index</a> (const <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, size_t index, <a class="el" href="json_8h.html#a1387c227b2cbdd56d75e3d768992c5d7">JProperty</a> **property)</td></tr>
+<tr class="memdesc:ad439690d2940fbea7d6352b62390ca84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a property from a JSON object by index.  <br /></td></tr>
+<tr class="separator:ad439690d2940fbea7d6352b62390ca84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063a9f53f5b53f58f142240e3d73b345" id="r_a063a9f53f5b53f58f142240e3d73b345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a063a9f53f5b53f58f142240e3d73b345">json_object_get_property</a> (const <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key, <a class="el" href="json_8h.html#a1387c227b2cbdd56d75e3d768992c5d7">JProperty</a> **property)</td></tr>
+<tr class="memdesc:a063a9f53f5b53f58f142240e3d73b345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a property from a JSON object by key.  <br /></td></tr>
+<tr class="separator:a063a9f53f5b53f58f142240e3d73b345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3d67cf696c7b62e242fde3ea926d72" id="r_a9c3d67cf696c7b62e242fde3ea926d72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c3d67cf696c7b62e242fde3ea926d72">json_array_remove_element</a> (<a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *array, size_t index)</td></tr>
+<tr class="memdesc:a9c3d67cf696c7b62e242fde3ea926d72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from a JSON array by index.  <br /></td></tr>
+<tr class="separator:a9c3d67cf696c7b62e242fde3ea926d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bd11a67c6d8c909ade911d58302235f" id="r_a9bd11a67c6d8c909ade911d58302235f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bd11a67c6d8c909ade911d58302235f">json_object_remove_property_by_index</a> (<a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, size_t index)</td></tr>
+<tr class="memdesc:a9bd11a67c6d8c909ade911d58302235f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a property from a JSON object by index.  <br /></td></tr>
+<tr class="separator:a9bd11a67c6d8c909ade911d58302235f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad38a1a22ebef044a7492d7544ae2e401" id="r_ad38a1a22ebef044a7492d7544ae2e401"><td class="memItemLeft" align="right" valign="top"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad38a1a22ebef044a7492d7544ae2e401">json_object_remove_property</a> (<a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *obj, const char *key)</td></tr>
+<tr class="memdesc:ad38a1a22ebef044a7492d7544ae2e401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a property from a JSON object by key.  <br /></td></tr>
+<tr class="separator:ad38a1a22ebef044a7492d7544ae2e401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of a JSON parser and serializer in C. </p>
@@ -209,15 +215,30 @@ Functions</h2></td></tr>
 <li>Include this file in your build to enable the JSON parsing and serialization functionality.</li>
 <li>Use the provided API functions to integrate JSON parsing and serialization into your C projects. </li>
 </ul>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a0df9808c682f44c69faa6aeb19aff092" name="a0df9808c682f44c69faa6aeb19aff092"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0df9808c682f44c69faa6aeb19aff092">&#9670;&#160;</a></span>json_array_add_element()</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1ae956a9759bb26a91b8379959f2bc85" name="a1ae956a9759bb26a91b8379959f2bc85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae956a9759bb26a91b8379959f2bc85">&#9670;&#160;</a></span>JSON_LIBRARY_BUILD</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_array_add_element </td>
+          <td class="memname">#define JSON_LIBRARY_BUILD</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a593b779c1862c97eba7e64782590de26" name="a593b779c1862c97eba7e64782590de26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a593b779c1862c97eba7e64782590de26">&#9670;&#160;</a></span>json_array_add_element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_array_add_element </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
         </tr>
@@ -241,14 +262,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0b11c1cd4ee6fec00678d09e4e40abb1" name="a0b11c1cd4ee6fec00678d09e4e40abb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b11c1cd4ee6fec00678d09e4e40abb1">&#9670;&#160;</a></span>json_array_get_element()</h2>
+<a id="a8bfa4b0ed410e16a16243a8e8ae5d39c" name="a8bfa4b0ed410e16a16243a8e8ae5d39c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bfa4b0ed410e16a16243a8e8ae5d39c">&#9670;&#160;</a></span>json_array_get_element()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_array_get_element </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_array_get_element </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
         </tr>
@@ -278,14 +299,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaa7dbc2e430431a07c93e8b89f5c0030" name="aaa7dbc2e430431a07c93e8b89f5c0030"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa7dbc2e430431a07c93e8b89f5c0030">&#9670;&#160;</a></span>json_array_remove_element()</h2>
+<a id="a9c3d67cf696c7b62e242fde3ea926d72" name="a9c3d67cf696c7b62e242fde3ea926d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c3d67cf696c7b62e242fde3ea926d72">&#9670;&#160;</a></span>json_array_remove_element()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_array_remove_element </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_array_remove_element </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#a065cd1e4df6c1f97258a746b1259ddcf">JArray</a> *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
         </tr>
@@ -309,14 +330,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6857adbfee1fddf0c6415f23f7230ffc" name="a6857adbfee1fddf0c6415f23f7230ffc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6857adbfee1fddf0c6415f23f7230ffc">&#9670;&#160;</a></span>json_object_add_property()</h2>
+<a id="a64d456fcc47d2734e29e81f1c1f8f51a" name="a64d456fcc47d2734e29e81f1c1f8f51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d456fcc47d2734e29e81f1c1f8f51a">&#9670;&#160;</a></span>json_object_add_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_object_add_property </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_object_add_property </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
         </tr>
@@ -346,14 +367,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1e9aa33c7a8327a299266a4fd065c19a" name="a1e9aa33c7a8327a299266a4fd065c19a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e9aa33c7a8327a299266a4fd065c19a">&#9670;&#160;</a></span>json_object_get_property()</h2>
+<a id="a063a9f53f5b53f58f142240e3d73b345" name="a063a9f53f5b53f58f142240e3d73b345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063a9f53f5b53f58f142240e3d73b345">&#9670;&#160;</a></span>json_object_get_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_object_get_property </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_object_get_property </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
         </tr>
@@ -383,14 +404,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a553e37423957065c811f5b0d0ba45e3c" name="a553e37423957065c811f5b0d0ba45e3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a553e37423957065c811f5b0d0ba45e3c">&#9670;&#160;</a></span>json_object_get_property_by_index()</h2>
+<a id="ad439690d2940fbea7d6352b62390ca84" name="ad439690d2940fbea7d6352b62390ca84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad439690d2940fbea7d6352b62390ca84">&#9670;&#160;</a></span>json_object_get_property_by_index()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_object_get_property_by_index </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_object_get_property_by_index </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
         </tr>
@@ -420,14 +441,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a86f4162e13d64324bee73dfc780eb868" name="a86f4162e13d64324bee73dfc780eb868"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86f4162e13d64324bee73dfc780eb868">&#9670;&#160;</a></span>json_object_remove_property()</h2>
+<a id="ad38a1a22ebef044a7492d7544ae2e401" name="ad38a1a22ebef044a7492d7544ae2e401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad38a1a22ebef044a7492d7544ae2e401">&#9670;&#160;</a></span>json_object_remove_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_object_remove_property </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_object_remove_property </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
         </tr>
@@ -451,14 +472,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abe60868c7bb0f5fd6ef0094e8e023fab" name="abe60868c7bb0f5fd6ef0094e8e023fab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe60868c7bb0f5fd6ef0094e8e023fab">&#9670;&#160;</a></span>json_object_remove_property_by_index()</h2>
+<a id="a9bd11a67c6d8c909ade911d58302235f" name="a9bd11a67c6d8c909ade911d58302235f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bd11a67c6d8c909ade911d58302235f">&#9670;&#160;</a></span>json_object_remove_property_by_index()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_object_remove_property_by_index </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_object_remove_property_by_index </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#ae0059c5a6b4ccce7aee37da06cd2fa35">JObject</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
         </tr>
@@ -482,14 +503,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a61b5cec2ca208be4f22338852740be17" name="a61b5cec2ca208be4f22338852740be17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61b5cec2ca208be4f22338852740be17">&#9670;&#160;</a></span>json_parse_array()</h2>
+<a id="adcf25d01fdc8bb50becf71b9dc1848da" name="adcf25d01fdc8bb50becf71b9dc1848da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf25d01fdc8bb50becf71b9dc1848da">&#9670;&#160;</a></span>json_parse_array()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_array </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_array </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -519,14 +540,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a774250dcdb1f80385a44f0c86af48646" name="a774250dcdb1f80385a44f0c86af48646"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a774250dcdb1f80385a44f0c86af48646">&#9670;&#160;</a></span>json_parse_bool()</h2>
+<a id="a4da15aaab3e1a8b7bbf93c6475456105" name="a4da15aaab3e1a8b7bbf93c6475456105"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da15aaab3e1a8b7bbf93c6475456105">&#9670;&#160;</a></span>json_parse_bool()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_bool </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_bool </td>
           <td>(</td>
           <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -550,14 +571,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a161fbfd9a6bc0685bca36cd53d888a9f" name="a161fbfd9a6bc0685bca36cd53d888a9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a161fbfd9a6bc0685bca36cd53d888a9f">&#9670;&#160;</a></span>json_parse_float()</h2>
+<a id="a3900202c40278bedea7fa0a76c92b3e3" name="a3900202c40278bedea7fa0a76c92b3e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3900202c40278bedea7fa0a76c92b3e3">&#9670;&#160;</a></span>json_parse_float()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_float </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_float </td>
           <td>(</td>
           <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -581,14 +602,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9cfad6d4ebe582592b8c75cda94cab93" name="a9cfad6d4ebe582592b8c75cda94cab93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cfad6d4ebe582592b8c75cda94cab93">&#9670;&#160;</a></span>json_parse_int()</h2>
+<a id="a4cb95367a25e12d28402c7a0232bf705" name="a4cb95367a25e12d28402c7a0232bf705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cb95367a25e12d28402c7a0232bf705">&#9670;&#160;</a></span>json_parse_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_int </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_int </td>
           <td>(</td>
           <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -612,14 +633,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a47fd775387431ae13a34da863ee61148" name="a47fd775387431ae13a34da863ee61148"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47fd775387431ae13a34da863ee61148">&#9670;&#160;</a></span>json_parse_null()</h2>
+<a id="a2229740cf5f94498eade081b23a53de7" name="a2229740cf5f94498eade081b23a53de7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2229740cf5f94498eade081b23a53de7">&#9670;&#160;</a></span>json_parse_null()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_null </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_null </td>
           <td>(</td>
           <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
@@ -638,14 +659,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a580e17001780124ea2281fb6734d8f08" name="a580e17001780124ea2281fb6734d8f08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a580e17001780124ea2281fb6734d8f08">&#9670;&#160;</a></span>json_parse_object()</h2>
+<a id="aeb32036be3b46fec49f9ed6bf170fb38" name="aeb32036be3b46fec49f9ed6bf170fb38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb32036be3b46fec49f9ed6bf170fb38">&#9670;&#160;</a></span>json_parse_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_object </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_object </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -675,14 +696,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7b9a322484e30a7412439a90fa43ee9e" name="a7b9a322484e30a7412439a90fa43ee9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b9a322484e30a7412439a90fa43ee9e">&#9670;&#160;</a></span>json_parse_property()</h2>
+<a id="a92dbc7195fa9a561da62e0f069316f8a" name="a92dbc7195fa9a561da62e0f069316f8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92dbc7195fa9a561da62e0f069316f8a">&#9670;&#160;</a></span>json_parse_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_property </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_property </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -712,14 +733,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a123d731526e36bdbac9fe0ab607d26d2" name="a123d731526e36bdbac9fe0ab607d26d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a123d731526e36bdbac9fe0ab607d26d2">&#9670;&#160;</a></span>json_parse_string()</h2>
+<a id="a44ca73bda4d391797bdb337779ef4943" name="a44ca73bda4d391797bdb337779ef4943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ca73bda4d391797bdb337779ef4943">&#9670;&#160;</a></span>json_parse_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * json_parse_string </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> char * json_parse_string </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -743,14 +764,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a08e8fa533df9881afacc68b410b12de9" name="a08e8fa533df9881afacc68b410b12de9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08e8fa533df9881afacc68b410b12de9">&#9670;&#160;</a></span>json_parse_value()</h2>
+<a id="afb5cc0b20dd28cf52dbe4b1a4ebab3f2" name="afb5cc0b20dd28cf52dbe4b1a4ebab3f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb5cc0b20dd28cf52dbe4b1a4ebab3f2">&#9670;&#160;</a></span>json_parse_value()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_parse_value </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_parse_value </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -780,14 +801,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac622885baf73888269e96bdaae1710ee" name="ac622885baf73888269e96bdaae1710ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac622885baf73888269e96bdaae1710ee">&#9670;&#160;</a></span>json_pool_alloc()</h2>
+<a id="a1c14dd7607b977faa14c0fa993130f18" name="a1c14dd7607b977faa14c0fa993130f18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c14dd7607b977faa14c0fa993130f18">&#9670;&#160;</a></span>json_pool_alloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void * json_pool_alloc </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void * json_pool_alloc </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -811,14 +832,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a85194ff6cfd842c60e47a7fe33ac4c24" name="a85194ff6cfd842c60e47a7fe33ac4c24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85194ff6cfd842c60e47a7fe33ac4c24">&#9670;&#160;</a></span>json_pool_manager_free_pool()</h2>
+<a id="a02dc3ce9691fe6b378564c854f9559d1" name="a02dc3ce9691fe6b378564c854f9559d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02dc3ce9691fe6b378564c854f9559d1">&#9670;&#160;</a></span>json_pool_manager_free_pool()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_pool_manager_free_pool </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_pool_manager_free_pool </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -842,14 +863,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8b05e2c6904dc5ff19dad540f769f59e" name="a8b05e2c6904dc5ff19dad540f769f59e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b05e2c6904dc5ff19dad540f769f59e">&#9670;&#160;</a></span>json_pool_manager_free_pools()</h2>
+<a id="a5513f92f2f211a9ad75ab69112df86fd" name="a5513f92f2f211a9ad75ab69112df86fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5513f92f2f211a9ad75ab69112df86fd">&#9670;&#160;</a></span>json_pool_manager_free_pools()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_pool_manager_free_pools </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_pool_manager_free_pools </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span></td><td>)</td>
           <td></td>
@@ -867,14 +888,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af8c2f83adebba14356e6c72e18b536c5" name="af8c2f83adebba14356e6c72e18b536c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8c2f83adebba14356e6c72e18b536c5">&#9670;&#160;</a></span>json_pool_manager_init()</h2>
+<a id="a0a6d66f9ccdab375d329c0c6211e473e" name="a0a6d66f9ccdab375d329c0c6211e473e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6d66f9ccdab375d329c0c6211e473e">&#9670;&#160;</a></span>json_pool_manager_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_pool_manager_init </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_pool_manager_init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="json_8h.html#adb26581adde5ca0bf588fc31c8ca095e">JPoolManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
         </tr>
@@ -897,14 +918,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a771623d9f20c7a657b862d35b2ce0c2f" name="a771623d9f20c7a657b862d35b2ce0c2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a771623d9f20c7a657b862d35b2ce0c2f">&#9670;&#160;</a></span>json_serialize_array_to_file()</h2>
+<a id="ac47928d0b5ca2867c7a1cafe81fb416b" name="ac47928d0b5ca2867c7a1cafe81fb416b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac47928d0b5ca2867c7a1cafe81fb416b">&#9670;&#160;</a></span>json_serialize_array_to_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_serialize_array_to_file </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_serialize_array_to_file </td>
           <td>(</td>
           <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
         </tr>
@@ -933,14 +954,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a80b1bb4c78817ef5525b12984b80e5cc" name="a80b1bb4c78817ef5525b12984b80e5cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80b1bb4c78817ef5525b12984b80e5cc">&#9670;&#160;</a></span>json_serialize_array_to_string()</h2>
+<a id="a3798e6bc67b1337ed85949230f5d048a" name="a3798e6bc67b1337ed85949230f5d048a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3798e6bc67b1337ed85949230f5d048a">&#9670;&#160;</a></span>json_serialize_array_to_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_serialize_array_to_string </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_serialize_array_to_string </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
@@ -976,14 +997,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aadbd0a3ffc0235682029ea220f3a02f4" name="aadbd0a3ffc0235682029ea220f3a02f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadbd0a3ffc0235682029ea220f3a02f4">&#9670;&#160;</a></span>json_serialize_object_to_file()</h2>
+<a id="af5e2b017ec752fa76a13266f4497deb9" name="af5e2b017ec752fa76a13266f4497deb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5e2b017ec752fa76a13266f4497deb9">&#9670;&#160;</a></span>json_serialize_object_to_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_serialize_object_to_file </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_serialize_object_to_file </td>
           <td>(</td>
           <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
         </tr>
@@ -1012,14 +1033,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3502f8bbb4ecadfe6011f227ba12b3b9" name="a3502f8bbb4ecadfe6011f227ba12b3b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3502f8bbb4ecadfe6011f227ba12b3b9">&#9670;&#160;</a></span>json_serialize_object_to_string()</h2>
+<a id="ab309b98e813ebe0500a03bc935490a5c" name="ab309b98e813ebe0500a03bc935490a5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab309b98e813ebe0500a03bc935490a5c">&#9670;&#160;</a></span>json_serialize_object_to_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_serialize_object_to_string </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_serialize_object_to_string </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
@@ -1055,14 +1076,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa3d91f2fad191fbf755b4b4b76617bf8" name="aa3d91f2fad191fbf755b4b4b76617bf8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3d91f2fad191fbf755b4b4b76617bf8">&#9670;&#160;</a></span>json_serialize_string_to_buffer()</h2>
+<a id="ac670a31469fe2bf124b19619db7dab54" name="ac670a31469fe2bf124b19619db7dab54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac670a31469fe2bf124b19619db7dab54">&#9670;&#160;</a></span>json_serialize_string_to_buffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_serialize_string_to_buffer </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_serialize_string_to_buffer </td>
           <td>(</td>
           <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -1093,14 +1114,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a97bdb789bb50c8569c1fde9bb6f144b0" name="a97bdb789bb50c8569c1fde9bb6f144b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97bdb789bb50c8569c1fde9bb6f144b0">&#9670;&#160;</a></span>json_serialize_string_to_file()</h2>
+<a id="a9b59e65b9cef4aab7002b3e622dafdca" name="a9b59e65b9cef4aab7002b3e622dafdca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b59e65b9cef4aab7002b3e622dafdca">&#9670;&#160;</a></span>json_serialize_string_to_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_serialize_string_to_file </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_serialize_string_to_file </td>
           <td>(</td>
           <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -1123,14 +1144,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1ea0d595e5efdc0cced40926e8f66088" name="a1ea0d595e5efdc0cced40926e8f66088"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ea0d595e5efdc0cced40926e8f66088">&#9670;&#160;</a></span>json_serialize_value_to_file()</h2>
+<a id="af83f4126e9fa22aa8fdee1f38d720b18" name="af83f4126e9fa22aa8fdee1f38d720b18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83f4126e9fa22aa8fdee1f38d720b18">&#9670;&#160;</a></span>json_serialize_value_to_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_serialize_value_to_file </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_serialize_value_to_file </td>
           <td>(</td>
           <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
         </tr>
@@ -1159,14 +1180,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aef5499fdbe08b72030cdbceaf38674ba" name="aef5499fdbe08b72030cdbceaf38674ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef5499fdbe08b72030cdbceaf38674ba">&#9670;&#160;</a></span>json_serialize_value_to_string()</h2>
+<a id="adab0c5431de4a532f9237e03fba2aeb9" name="adab0c5431de4a532f9237e03fba2aeb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab0c5431de4a532f9237e03fba2aeb9">&#9670;&#160;</a></span>json_serialize_value_to_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int json_serialize_value_to_string </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> int json_serialize_value_to_string </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
@@ -1202,14 +1223,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa0b408f56db5bd95977053050a8865be" name="aa0b408f56db5bd95977053050a8865be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0b408f56db5bd95977053050a8865be">&#9670;&#160;</a></span>json_skip_whitespace()</h2>
+<a id="a2eed212b14cbb9c8c1527d55fe076c88" name="a2eed212b14cbb9c8c1527d55fe076c88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eed212b14cbb9c8c1527d55fe076c88">&#9670;&#160;</a></span>json_skip_whitespace()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void json_skip_whitespace </td>
+          <td class="memname"><a class="el" href="__export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a> void json_skip_whitespace </td>
           <td>(</td>
           <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>

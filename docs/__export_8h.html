@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TinyJson: File List</title>
+<title>TinyJson: tinyjson/_export.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -56,8 +56,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="doc-content">
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function(){ initResizable(false); });
@@ -84,18 +82,52 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_4a70653667a55d1e94824db751343ae8.html">tinyjson</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">File List</div></div>
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle"><div class="title">_export.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all files with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:dynsection.toggleLevel(1);">1</span><span onclick="javascript:dynsection.toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="dynsection.toggleFolder('0_')">&#9660;</span><span id="img_0_" class="iconfopen" onclick="dynsection.toggleFolder('0_')">&#160;</span><a class="el" href="dir_4a70653667a55d1e94824db751343ae8.html" target="_self">tinyjson</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="__export_8h_source.html"><span class="icondoc"></span></a><a class="el" href="__export_8h.html" target="_self">_export.h</a></td><td class="desc">Defines the JSON_API macro for symbol export and import in shared libraries </td></tr>
-<tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="json_8c.html" target="_self">json.c</a></td><td class="desc">Implementation of a JSON parser and serializer in C </td></tr>
-<tr id="row_0_2_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="json_8h_source.html"><span class="icondoc"></span></a><a class="el" href="json_8h.html" target="_self">json.h</a></td><td class="desc">A JSON parser and serializer in C </td></tr>
+
+<p>Defines the JSON_API macro for symbol export and import in shared libraries.  
+<a href="#details">More...</a></p>
+
+<p><a href="__export_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1d61ffde86ce1a18fd83194ff0d9a206" id="r_a1d61ffde86ce1a18fd83194ff0d9a206"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a></td></tr>
+<tr class="memdesc:a1d61ffde86ce1a18fd83194ff0d9a206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for exporting and importing symbols in a shared library.  <br /></td></tr>
+<tr class="separator:a1d61ffde86ce1a18fd83194ff0d9a206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the JSON_API macro for symbol export and import in shared libraries. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1d61ffde86ce1a18fd83194ff0d9a206" name="a1d61ffde86ce1a18fd83194ff0d9a206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d61ffde86ce1a18fd83194ff0d9a206">&#9670;&#160;</a></span>JSON_API</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JSON_API</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro for exporting and importing symbols in a shared library. </p>
+<p>This macro handles the platform-specific directives for exporting and importing symbols in a shared library. When building the library, symbols are exported, and when using the library, symbols are imported.</p>
+<p>On Windows, __declspec(dllexport) is used for exporting symbols when building the library, and __declspec(dllimport) is used for importing symbols when using the library.</p>
+<p>On other platforms, <b>attribute</b>((visibility("default"))) is used for exporting symbols when building the library. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
