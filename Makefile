@@ -4,12 +4,13 @@ STATIC_LIB = lib$(LIBRARY_NAME).a
 EXECUTABLE = main
 TEST_EXECUTABLE = test_json
 
-SRC_FILES = json.c
-HEADER_FILES = json.h _export.h
-TEST_SRC = unit.c
+SRC_DIR = tinyjson
+SRC_FILES = $(SRC_DIR)/json.c
+HEADER_FILES = $(SRC_DIR)/json.h $(SRC_DIR)/_export.h
+TEST_SRC = main.c
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Itinyjson
+CFLAGS = -Wall -Wextra -I$(SRC_DIR)
 LDFLAGS = -L. -l$(LIBRARY_NAME) -Wl,-rpath,.
 
 all: $(SHARED_LIB) $(STATIC_LIB) $(EXECUTABLE) $(TEST_EXECUTABLE)
