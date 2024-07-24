@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TinyJson: _S_JMemoryPool Struct Reference</title>
+<title>TinyJson: include/tinyjson/export.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,65 +82,36 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d74dc606aefb8bed774b8ee66148f01f.html">tinyjson</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="struct___s___j_memory_pool-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">_S_JMemoryPool Struct Reference</div></div>
+  <div class="headertitle"><div class="title">export.h</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Memory pool for efficient allocation during JSON parsing.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="json_8h_source.html">json.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:abdd9e46ad763aaede044dd0cd5447910" id="r_abdd9e46ad763aaede044dd0cd5447910"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdd9e46ad763aaede044dd0cd5447910">data</a> [<a class="el" href="json_8h.html#a5d4c92979db8307b1557a792e017ea3f">JSON_MAX_POOL_SIZE</a>]</td></tr>
-<tr class="separator:abdd9e46ad763aaede044dd0cd5447910"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35b3692da75ab260435388c31badf4ae" id="r_a35b3692da75ab260435388c31badf4ae"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35b3692da75ab260435388c31badf4ae">used</a></td></tr>
-<tr class="separator:a35b3692da75ab260435388c31badf4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Memory pool for efficient allocation during JSON parsing. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="abdd9e46ad763aaede044dd0cd5447910" name="abdd9e46ad763aaede044dd0cd5447910"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdd9e46ad763aaede044dd0cd5447910">&#9670;&#160;</a></span>data</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char _S_JMemoryPool::data[<a class="el" href="json_8h.html#a5d4c92979db8307b1557a792e017ea3f">JSON_MAX_POOL_SIZE</a>]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Pool data </p>
-
-</div>
-</div>
-<a id="a35b3692da75ab260435388c31badf4ae" name="a35b3692da75ab260435388c31badf4ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35b3692da75ab260435388c31badf4ae">&#9670;&#160;</a></span>used</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t _S_JMemoryPool::used</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Amount of memory used in the pool </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/tinyjson/<a class="el" href="json_8h_source.html">json.h</a></li>
-</ul>
-</div><!-- contents -->
+<a href="export_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef EXPORT_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define EXPORT_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#if defined(_WIN32) || defined(_WIN64)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifdef JSON_LIBRARY_BUILD</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define JSON_API __declspec(dllexport)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define JSON_API __declspec(dllimport)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#ifdef JSON_LIBRARY_BUILD</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#define JSON_API __attribute__((visibility(&quot;default&quot;)))</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="export_8h.html#a1d61ffde86ce1a18fd83194ff0d9a206">   34</a></span><span class="preprocessor">#define JSON_API</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif </span><span class="comment">// EXPORT_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0

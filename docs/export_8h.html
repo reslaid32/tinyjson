@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TinyJson: _S_JPoolManager Struct Reference</title>
+<title>TinyJson: include/tinyjson/export.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,81 +82,47 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d74dc606aefb8bed774b8ee66148f01f.html">tinyjson</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="struct___s___j_pool_manager-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">_S_JPoolManager Struct Reference</div></div>
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle"><div class="title">export.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Manager for handling multiple memory pools.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="json_8h_source.html">json.h</a>&gt;</code></p>
+<p><a href="export_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a72d5737e43ac78cf8b623893e108d04c" id="r_a72d5737e43ac78cf8b623893e108d04c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="json_8h.html#a2127e20cc18c51db07268e9ef8fac8df">JMemoryPool</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d5737e43ac78cf8b623893e108d04c">pools</a></td></tr>
-<tr class="separator:a72d5737e43ac78cf8b623893e108d04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a156af7e9f941e98c0286de466605d8c4" id="r_a156af7e9f941e98c0286de466605d8c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a156af7e9f941e98c0286de466605d8c4">pool_count</a></td></tr>
-<tr class="separator:a156af7e9f941e98c0286de466605d8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a028b2a3cd85444836e94128d589e148f" id="r_a028b2a3cd85444836e94128d589e148f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a028b2a3cd85444836e94128d589e148f">current_pool</a></td></tr>
-<tr class="separator:a028b2a3cd85444836e94128d589e148f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1d61ffde86ce1a18fd83194ff0d9a206" id="r_a1d61ffde86ce1a18fd83194ff0d9a206"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d61ffde86ce1a18fd83194ff0d9a206">JSON_API</a></td></tr>
+<tr class="memdesc:a1d61ffde86ce1a18fd83194ff0d9a206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for exporting and importing symbols in a shared library.  <br /></td></tr>
+<tr class="separator:a1d61ffde86ce1a18fd83194ff0d9a206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manager for handling multiple memory pools. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a028b2a3cd85444836e94128d589e148f" name="a028b2a3cd85444836e94128d589e148f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a028b2a3cd85444836e94128d589e148f">&#9670;&#160;</a></span>current_pool</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1d61ffde86ce1a18fd83194ff0d9a206" name="a1d61ffde86ce1a18fd83194ff0d9a206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d61ffde86ce1a18fd83194ff0d9a206">&#9670;&#160;</a></span>JSON_API</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t _S_JPoolManager::current_pool</td>
+          <td class="memname">#define JSON_API</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Index of the current pool being used </p>
+
+<p>Macro for exporting and importing symbols in a shared library. </p>
+<p>This macro handles the platform-specific directives for exporting and importing symbols in a shared library. When building the library, symbols are exported, and when using the library, symbols are imported.</p>
+<p>On Windows, __declspec(dllexport) is used for exporting symbols when building the library, and __declspec(dllimport) is used for importing symbols when using the library.</p>
+<p>On other platforms, <b>attribute</b>((visibility("default"))) is used for exporting symbols when building the library. </p>
 
 </div>
 </div>
-<a id="a156af7e9f941e98c0286de466605d8c4" name="a156af7e9f941e98c0286de466605d8c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a156af7e9f941e98c0286de466605d8c4">&#9670;&#160;</a></span>pool_count</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t _S_JPoolManager::pool_count</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Total number of pools </p>
-
-</div>
-</div>
-<a id="a72d5737e43ac78cf8b623893e108d04c" name="a72d5737e43ac78cf8b623893e108d04c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72d5737e43ac78cf8b623893e108d04c">&#9670;&#160;</a></span>pools</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="json_8h.html#a2127e20cc18c51db07268e9ef8fac8df">JMemoryPool</a>* _S_JPoolManager::pools</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Array of memory pools </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/tinyjson/<a class="el" href="json_8h_source.html">json.h</a></li>
-</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
