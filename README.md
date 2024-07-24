@@ -51,7 +51,7 @@ When `JSON_DEBUG_MODE` is defined, this macro will print debug messages using th
 his macro sets the number of spaces used for indentation in JSON serialization. The value of _Indent should be a positive integer representing the number of spaces.
 
 ```c
-#define JSON_INDENT(_Indent) (int)_Indent
+#define JSON_INDENT(_Indent) (unsigned int)_Indent
 ```
 
 ## JSON_INDENT_NULL

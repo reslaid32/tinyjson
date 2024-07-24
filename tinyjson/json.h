@@ -79,7 +79,7 @@
  * 
  * @param _Indent The number of spaces for indentation.
  */
-#define JSON_INDENT(_Indent) (int)_Indent
+#define JSON_INDENT(_Indent) (unsigned int)_Indent
 
 /**
  * @brief Define no indentation for JSON serialization.
